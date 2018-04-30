@@ -11,7 +11,7 @@
     <header>
       <!-- Fixed navbar -->
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="col-sm-3 col-md-2 col-1"><img src="https://c.fastcdn.co/u/074e20eb/27994387-0-logo.svg" alt="" width="200"></a>
+        <a class="col-sm-3 col-md-3 col-lg-3 col-xl-2 d-none d-md-block d-xl-block d-lg-block"><img src="https://c.fastcdn.co/u/074e20eb/27994387-0-logo.svg" alt="" width="90%"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -88,7 +88,7 @@
     <!-- Begin page content -->
     <div class="container-fluid">
       <div class="row">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <nav class="col-md-3 col-lg-3 col-xl-2 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
@@ -177,15 +177,15 @@
           </div>
         </nav>
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4" style="margin-top:-60px;">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center border-bottom">
             <h1 class="h2">Know Your Customer</h1>            
           </div>          
         </main> 
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <div class="col-md-6 col-xl-6 order-md-1">
+                <div class="col-md-12 col-xl-6 order-md-1">
           <h4 class="mb-3">Terms & Conditions</h4>
           <form id="formkycconfirmed" class="needs-validation" role="form" method="POST" action="{{ url('kycconfirmed') }}" novalidate>
       {{ csrf_field() }}
@@ -236,7 +236,7 @@
 
     <footer class="footer">
       <div class="container" align="center">
-        <span class="text-muted"><img src="http://167.114.47.35/webB/images/poweredbytokennow.svg" alt="" width="150"></span>
+        <span class="text-muted"><img src="{{ asset('poweredbytokennow.svg') }}" alt="" width="150"></span>
       </div>
     </footer>
 

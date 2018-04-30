@@ -1,48 +1,7 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
-
-    <title>Belotto</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	
-  	<link rel="stylesheet" type="text/css" href="{{ asset('css/fileinput.css') }}">
-  	
-  	<link href="{{ asset('css/btn_img.css') }}" rel="stylesheet">
-  	
-  	<link href="{{ asset('css/datepicker/datepicker.css') }}" rel="stylesheet">
-  	
-  	<script type="text/javascript" charset="utf8" src="{{ asset('js/jquery/jquery-1.8.2.min.js') }}"></script>
-  	
-  	<script type="text/javascript" charset="utf8" src="{{ asset('js/fileinput/fileinput.js') }}"></script>
-  	
-  	<script src="{{ asset('js/kyc.js') }}" type="text/javascript" charset="utf-8" async defer></script>  
-	
-	
-	
-	
-
-    <!-- Custom styles for this template -->
-    <link href="{{ asset('css/sticky-footer-navbar.css') }}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
-  </head>
-
-  <body>
-
-  <header>
+<header>
   <!-- Fixed navbar -->
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="col-sm-3 col-md-3 col-lg-3 col-xl-2 d-none d-md-block d-xl-block d-lg-block"><img src="https://c.fastcdn.co/u/074e20eb/27994387-0-logo.svg" alt="" width="90%"></a>
+    <a class="col-sm-3 col-md-2 col-1 d-none d-xl-none d-lg-block"><img src="https://c.fastcdn.co/u/074e20eb/27994387-0-logo.svg" alt="" width="200"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -81,51 +40,51 @@
     </div>
   </nav>
 </header>
-<?php $currentRoute = Route::getCurrentRoute(); ?>
+
 <!-- Begin page content -->
 <div class="container-fluid">
   <div class="row">
-    <nav class="col-md-3 col-lg-3 col-xl-2 d-none d-md-block bg-light sidebar">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
       <div class="sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link {{ $currentRoute->uri() ==  'dashboard' ? 'active' : ''  }}" href="{{ url('dashboard') }}">
+            <a class="nav-link active" href="{{ url('dashboard') }}">
             <span data-feather="home"></span>
             Dashboard <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ $currentRoute->uri() ==  'purchase' ? 'active' : ''  }}" href="{{ url('purchase') }}">
+            <a class="nav-link" href="{{ url('purchase') }}">
             <span data-feather="file"></span>
             Purchase
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ $currentRoute->uri() ==  'referrals' ? 'active' : ''  }}" href="{{ url('referrals') }}">
+            <a class="nav-link" href="{{ url('referrals') }}">
             <span data-feather="users"></span>
             Referrals
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ $currentRoute->uri() ==  'history' ? 'active' : ''  }}" href="{{ url('history') }}">
+            <a class="nav-link" href="{{ url('history') }}">
             <span data-feather="dollar-sign"></span>
             USD History
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ $currentRoute->uri() ==  'kyc' ? 'active' : ''  }}" href="{{ url('kyc') }}">
+            <a class="nav-link" href="{{ url('kyc') }}">
             <span data-feather="alert-octagon"></span>
             KYC
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ $currentRoute->uri() ==  'profile' ? 'active' : ''  }}" href="{{ url('profile') }}">
+            <a class="nav-link" href="{{ url('profile') }}">
             <span data-feather="monitor"></span>
             Profile
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ $currentRoute->uri() ==  'change_password' ? 'active' : ''  }}" href="{{ url('change_password') }}">
+            <a class="nav-link" href="{{ url('change_password') }}">
             <span data-feather="shield"></span>
             Change Password
             </a>
@@ -146,34 +105,13 @@
       </div>
     </nav>
 
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-9 col-xl-10 px-4">
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">
-          @switch( $currentRoute->uri() )
-            @case('dashboard')
-              Dashboard
-            @break
-            @case('purchase')
-              Purchase
-            @break
-            @case('referrals')
-              Referrals
-            @break
-            @case('history')
-              History
-            @break
-            @case('kyc')
-              Kyc
-            @break
-            @case('profile')
-              Profile
-            @break
-            @case('change_password')
-              Change Password
-            @break
-          @endswitch
-        </h1>
+        <h1 class="h2">Dashboard</h1>
       </div>
     </main>
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-9 col-xl-10 px-4">
-      @yield('content')
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-3 px-4">
+      @yield('content')      
+    </main>
+  </div>
+</div>

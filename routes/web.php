@@ -12,6 +12,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 
 Auth::routes ();
 
@@ -55,9 +57,9 @@ Route::group(['prefix' => '/'], function(){
 	
 	Route::get ( 'dashboard', [
 
-		'uses' => 'DashboardController@dashboard'
+		'uses' => 'DashboardController@dashboard',		
 
-	] );
+	]);
 	
 	Route::get ( 'purchase', [
 
