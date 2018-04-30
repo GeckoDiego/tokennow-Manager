@@ -13,7 +13,6 @@
           <ul class="navbar-nav mr-auto">
               <li class="nav-item text-nowrap ml-4">
                 <a>{{ $reguser[0]->email}}</a><br>
-                <a>Balance (<b>BEL: 0  -  CREDITS = 0</b>)</a>
               </li>
           </ul>  
           <ul class="navbar-nav px-3">
@@ -113,26 +112,21 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Dashboard</h1>
-            <div class="btn-toolbar mb-2 mb-md-0">             
-            </div>
           </div>
         </main>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-xl-6 order-md-1">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <div class="col-md-6 col-xl-6 order-md-1">
           <h2 class="mb-3"><b>ICO STAGE: PRE-SALE</b></h2>  
           <small id="emailHelp" style="font-size: 20px; font-weight: bold !important; margin-top: -10px;" class="form-text text-muted">PRE-SALE END: 26th May 2018</small>   
         </div>
       </div>
       <div class="row mt-5">
         <div class="col-md-6 col-xl-6 order-md-1">
-          <h5 class="mb-3"><b>TOTAL TOKEN PRE-SALE: 1'200.000 BEL</b></h5>  
+          <h5 class="mb-3"><b>TOTAL TOKEN PRE-SALE: 120.000.000 BEL</b></h5>  
         </div>
       </div>
-      <div class="row">
+ <!--     <div class="row">
         <div class="col-md-9 col-xl-9 order-md-1">
           <div class="progress">
             <div class="progress-bar" role="progressbar" style="width: 25%; background-color:#392068 ;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>            
@@ -140,15 +134,16 @@
           <small id="emailHelp" style="font-size: 12px; !important; font-weight: bold !important;" class="form-text text-muted">SOLD: 180.000 BEL</small>
           <small id="emailHelp" style="font-size: 12px; !important; font-weight: bold !important;" class="form-text text-muted">SOLD: 180.000 BEL</small>   
         </div>
-      </div>
+      </div>-->
       <div class="row mt-5 mb-3">
         <div class="col-md-9 order-md-1">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item shli"><b>TOKEN SUPPLY: 1'200.000.000 BEL</b></li>
+            <li class="list-group-item shli"><b>TOKEN SUPPLY: 1.200.000.000 BEL</b></li>
             <li class="list-group-item shli"><b>PRE-SALE: 10%</b></li>
             <li class="list-group-item shli"><b>SALE: 50%</b></li>
             <li class="list-group-item shli"><b>TEAM & ADVISOR: 15%</b></li>
             <li class="list-group-item shli"><b>BOUNTY: 5%</b></li>
+ 	    <li class="list-group-item shli"><b>RESERVE: 20%</b></li>
             <li class="list-group-item shli"><b>HARDCARP: $10'000.000 USD</b></li>
           </ul>
         </div>
@@ -157,6 +152,8 @@
         <div class="col-md-3 col-xl-2 order-md-1">
           <a href="https://belotto.io/download/belotto-wp-english/?wpdmdl=14" class="btn btn-primary btn-lg mb-5" role="button" target="_blank">WHITEPAPER</a>
         </div>
+          </div>
+        </main>
       </div>
     </div>
 

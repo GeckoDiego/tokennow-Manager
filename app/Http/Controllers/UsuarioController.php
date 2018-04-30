@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\User;
-use App\Paises;
+use App\Countries;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
@@ -13,13 +13,11 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Session;
+use Mail;
 
 class UsuarioController extends Controller
 {
 	
-	
-	
-
 	public function kyc(Request $request)
 	{
 		header('Access-Control-Allow-Origin: *');
@@ -40,7 +38,7 @@ class UsuarioController extends Controller
 		
 		$reguser = DB::select("select * FROM user WHERE id = ".$idusu);
 		
-		$repaises = DB::select("select id_pais,name FROM paises WHERE estado = 1");  
+		$repaises = DB::select("select id_country ,name FROM countries WHERE estado = 1");  
 		
 		if ($reguser[0]->kyc1confirmed == 'YES' and $reguser[0]->confirmedChecks == 'NO' and $reguser[0]->confirmed == 'NO')
 			{
@@ -335,6 +333,71 @@ class UsuarioController extends Controller
 					
 			}		
 			
+      
+     public function recovery(Request $request)
+			{
+				header('Access-Control-Allow-Origin: *');
+				header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+				header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Disposition, Content-Description');
+			
+			
+				@session_start();	
+				
+				if (trim($request->input('email')) == '')
+					{	
+						Session::put('mensajeerror',trans("Empty data is not accepted"));
+    		
+						return back();
+					}
+				//se crea un password temporal
+        //dd(date('YmdHis'));
+        $elpass = trim('belotto'.date('YmdHis'));  //dd($elpass);
+        
+        $newpass = md5(trim($elpass));
+				
+				$reguser = DB::select("select * FROM user WHERE email = '".strtolower($request->input('email'))."'");	
+    
+        if (count($reguser) == 0)
+          {
+            Session::put('mensajeerror',trans("the mail does not correspond to the user"));
+    		
+						return back();
+				  }
+             
+				 	DB::table('user')->where('id', '=',$reguser[0]->id)
+									->update(['password' => $newpass,
+									
+									]);  
+                                                   
+          //se envia el correo         
+          
+          $valores = array( 'email' => strtolower($request->input('email')));
+					
+				 $data = array('name'=>"Mr(s). ".$request->input('name'), 
+						"body" => 'your temporary password is',
+            "nombre"  => $reguser[0]->name,       
+						"newpassword"=>trim($elpass));
+   
+				 Mail::send('email.emailactive', $data, function($message) use ($valores){	 
+					
+					$message->to($valores['email'], 'recover password')
+								->subject('Password recovery');
+						
+					$message->from('noreply@belotto.io', 'Belotto');
+					
+				});	                                
+									
+				Session::put('mensaje',trans("the data was updated"));
+    		
+				return back();					
+							
+			
+			}		     
+          
+          
+          
+          
+          
 			
 		public function changepassword(Request $request)
 			{

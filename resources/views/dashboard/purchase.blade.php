@@ -13,7 +13,6 @@
           <ul class="navbar-nav mr-auto">
               <li class="nav-item text-nowrap ml-4">
                 <a>{{ $reguser[0]->email}}</a><br>
-                <a>Balance (<b>BEL: 0  -  CREDITS = 0</b>)</a>
               </li>
           </ul>  
           <ul class="navbar-nav px-3">
@@ -115,12 +114,9 @@
             <h1 class="h2">Purchase</h1>            
           </div>
         </main>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-xl-6 order-md-1">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <div class="col-md-6 col-xl-6 order-md-1">
           <h4 class="mb-3">Last Dollar / Ether value update: {{ date('F d, Y') }}</h4>  
         </div>
       </div>
@@ -129,7 +125,7 @@
           <div class="card mb-3" style="max-width: 18rem;">
             <div class="card-header"><h4>1 ETH</h4></div>
             <div class="card-body text-primary">
-              <h5 class="card-title selcol">$630 USD</h5>
+              <h5 class="card-title selcol">$660 USD</h5>
             </div>
           </div>
         </div>
@@ -137,7 +133,7 @@
           <div class="card mb-3" style="max-width: 18rem;">
             <div class="card-header"><h4>1 ETH</h4></div>
             <div class="card-body text-primary">
-              <h5 class="card-title selcol">3.150 BEL</h5>
+              <h5 class="card-title selcol">4,740 BEL</h5>
             </div>
           </div>
         </div>
@@ -172,16 +168,19 @@
       <div class="row mt-4">
           <div class="col-md-6 col-xl-6 order-md-1">
             <div class="alert alert-secondary" role="alert">
-                <b>Your Address Wallet :</b><br>
-                <span>5JWZD4tYheDQ5EAHHsZL2ypyhMK5QMBn4rV8M6JJLP</span>
-                <br><span><br><b>To address Contract :</b></span><br>
-                <span>0xcDC91EE08597244891Ec84E58fDad43D6fe51dBE</span>
+               <!-- <b>Your Address Wallet :</b><br>
+                <span>5JWZD4tYheDQ5EAHHsZL2ypyhMK5QMBn4rV8M6JJLP</span>-->
+                <br><span><br><b>To address Contract :</b></span><br><br>
+                <img src="http://tokennow.belotto.io/QR-contract.png" width="100">
+                <span>0x1D54064456965c1dA3B95241aAfe9218f22F48D8</span>
               </div>
           </div>
       </div>
       <div class="row mt-2">
         <div class="col-md-9 order-md-1">
           <h4 class="mb-3" style="color: #392068 ;"><b>BONUS</b> =  30% Included    <b>EXTRA BONUS</b> +5 ETH = 10% / +10 ETH = 25%</h4>  
+    	<h4>MIN. PURCHASE= 0.1 ETH</h4>
+	<h4>MAX. PURCHASE PER TRANSACTION = 200 ETH</h4>
         </div>
       </div>
       <div class="row mt-2 mb-3">
@@ -197,6 +196,9 @@
         <div class="col-md-9 order-md-1">
           <h6 style="color: red ;" class="mb-5">The dollar / ether value can be updated at least every 24 hours, if there are large changes in the ether price, you can check the dollar price in USD History in the menu.</h6>  
         </div>
+          </div>
+        </main>
+
       </div>
     </div>
 
@@ -230,12 +232,12 @@
           return x1 + x2;
       }
       function belCalculation(val){        
-        var ETHValue = 3150;
+        var ETHValue = 4740;
         var value = val.target.value;
         $("#BELVAL").val(addCommas(value*ETHValue));
-        $(".creditsVal").text(addCommas(value*ETHValue));
+ 	 $(".creditsVal").text(addCommas(value*ETHValue));
       }
     </script>
     
   </body>
-</html>
+4</html>

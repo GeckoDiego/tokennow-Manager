@@ -4,15 +4,15 @@
     <header>
       <!-- Fixed navbar -->
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="col-sm-3 col-md-2 col-1"><img src="https://c.fastcdn.co/u/074e20eb/27994387-0-logo.svg" alt="" width="200"></a>
+        <a class="col-sm-3 col-md-2 col-1 d-none d-xl-block"><img src="https://c.fastcdn.co/u/074e20eb/27994387-0-logo.svg" alt="" width="200"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
               <li class="nav-item text-nowrap ml-4">
-                <a>{{ $reguser[0]->email}}</a><br>
-                <a>Balance (<b>BEL: 0  -  CREDITS = 0</b>)</a>
+                <a style="color:black;">{{ $reguser[0]->email}}</a><br>
+                <a style="display:none">Balance (<b>BEL: 0  -  CREDITS = 0</b>)</a>
               </li>
           </ul>  
           <ul class="navbar-nav px-3">

@@ -96,8 +96,17 @@ class RegisterController extends Controller
 				
 				$tk = str_replace(".", '_,_', $tk);
 				
+			  $regemail = DB::select("SELECT * from user where email = '".strtolower($request->input('email'))."'");
+                    
+        if (count($regemail) > 0)
+          {            
+					  Session::put('mensajeerror',trans("You already have that email"));
+                                                             
+             return back();	
 				
-								
+			    	//return redirect('/');
+          }		
+          	
 				DB::table('user')->insert(
 							array(
 									'name'     			=> $request->input('name'),
@@ -108,7 +117,7 @@ class RegisterController extends Controller
 									'confirmationCode'	=> $tk,
 									'confirmedChecks'	=> 'NO',
 									'emailconfirmed'	=> 'NO',
-									
+								        'kyc1confirmed' => 'NO',	
 									'createDate'	=> date("Y-m-d H:m:s")
 							)
 					);
@@ -119,14 +128,14 @@ class RegisterController extends Controller
 					
 				$data = array('name'=>"Mr(s). ".$request->input('name'), 
 						"body" => 'To validate your account, proceed to open the link...',
-						"url"=>"http://www.tokennow.gecko/tk/".$tk);
+						"url"=>"tokennow.belotto.io/tk/".$tk);
    
 				Mail::send('email.activation', $data, function($message) use ($valores){	  
 					
 					$message->to($valores['email'], 'Validate email')
-								->subject('Tokennow');
+								->subject('Verification Email');
 						
-					$message->from('tokennows@tokennow.com','Messenger Service');
+					$message->from('noreply@belotto.io', 'Belotto');
 					
 				});	
 				

@@ -112,6 +112,9 @@ header{
   background-color: #392068 !important;
 }
 @media (min-width: 481px) and (max-width: 767px) {
+  .navbar{
+    background-color: #392068 !important;
+  }
   .navbar > a{
     background-color: #f5f5f5 !important;
   }
@@ -127,6 +130,9 @@ header{
   }
 }
 @media (min-width: 320px) and (max-width: 480px) {
+  .navbar{
+    background-color: #392068 !important;
+  }
   .navbar > a{
     background-color: #f5f5f5 !important;
   }

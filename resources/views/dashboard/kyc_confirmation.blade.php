@@ -1,10 +1,10 @@
 @include('templates.dash_app')
 @section('main')
 <?php
-	$confirmed = $reguser[0]->confirmed ;  
-	
-	$hoy = date('Y-m-d');
-		
+  $confirmed = $reguser[0]->confirmed ;  
+  
+  $hoy = date('Y-m-d');
+    
 ?>
   <body>
 
@@ -15,73 +15,73 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-	
-		
-		
-			<div class="collapse navbar-collapse" id="navbarCollapse">
-			  <ul class="navbar-nav mr-auto">
+  
+    
+    
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
               <li class="nav-item text-nowrap ml-4">
                 <a>{{ $reguser[0]->email}}</a><br>
                 <a>Balance (<b>BEL: 0  -  CREDITS = 0</b>)</a>
               </li>
-			  </ul>  
-			  <ul class="navbar-nav px-3">
-				<li class="nav-item text-nowrap d-block d-sm-none d-sm-block d-md-none">
-					@if ($confirmed == 'YES')
-						<a class="nav-link" href="{{ url('dashboard') }}">Dashboard</a>
-					@else
-						<a class="nav-link colorinactivotexto" href="javascript:;">Dashboard</a>
-					@endif
-						
-				</li>
-				<li class="nav-item text-nowrap d-block d-sm-none d-sm-block d-md-none">
-					@if ($confirmed == 'YES')
-						<a class="nav-link" href="{{ url('purchase') }}">Purchase</a>
-					@else
-						<a class="nav-link colorinactivotexto" href="javascript:;">Purchase</a>
-					@endif
-				</li>
-				<li class="nav-item text-nowrap d-block d-sm-none d-sm-block d-md-none">
-					@if ($confirmed == 'YES')
-						<a class="nav-link" href="{{ url('referrals') }}">Referrals</a>
-					@else
-						<a class="nav-link colorinactivotexto" href="javascript:;">Referrals</a>
-					@endif
-				</li>
-				<li class="nav-item text-nowrap d-block d-sm-none d-sm-block d-md-none">
-					@if ($confirmed == 'YES')
-						<a class="nav-link" href="{{ url('history') }}">USD History</a>
-					@else
-						<a class="nav-link colorinactivotexto" href="javascript:;">USD History</a>
-					@endif
-				</li>
-				<li class="nav-item text-nowrap d-block d-sm-none d-sm-block d-md-none">
-					@if ($confirmed == 'YES')
-						<a class="nav-link" href="{{ url('kyc') }}">KYC</a>
-					@else
-						<a class="nav-link colorinactivotexto" href="javascript:;">KYC</a>
-					@endif
-				</li>
-				<li class="nav-item text-nowrap d-block d-sm-none d-sm-block d-md-none">
-					@if ($confirmed == 'YES')
-						<a class="nav-link" href="{{ url('profile') }}">Profile</a>	
-					@else
-						<a class="nav-link colorinactivotexto" href="javascript:;">Profile</a>	
-					@endif
-				</li>
-				<li class="nav-item text-nowrap d-block d-sm-none d-sm-block d-md-none">
-					@if ($confirmed == 'YES')
-						<a class="nav-link" href="{{ url('change_password') }}">Change Password</a>
-					@else
-						<a class="nav-link colorinactivotexto" href="javascript:;">Change Password</a>
-					@endif
-				</li>
-				<li class="nav-item text-nowrap">
-				  <a class="nav-link colorinactivotexto" href="{{ url('logout') }}">Logout</a>
-				</li>
-			  </ul>                 
-			</div>
-		
+        </ul>  
+        <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap d-block d-sm-none d-sm-block d-md-none">
+          @if ($confirmed == 'YES')
+            <a class="nav-link" href="{{ url('dashboard') }}">Dashboard</a>
+          @else
+            <a class="nav-link colorinactivotexto" href="javascript:;">Dashboard</a>
+          @endif
+            
+        </li>
+        <li class="nav-item text-nowrap d-block d-sm-none d-sm-block d-md-none">
+          @if ($confirmed == 'YES')
+            <a class="nav-link" href="{{ url('purchase') }}">Purchase</a>
+          @else
+            <a class="nav-link colorinactivotexto" href="javascript:;">Purchase</a>
+          @endif
+        </li>
+        <li class="nav-item text-nowrap d-block d-sm-none d-sm-block d-md-none">
+          @if ($confirmed == 'YES')
+            <a class="nav-link" href="{{ url('referrals') }}">Referrals</a>
+          @else
+            <a class="nav-link colorinactivotexto" href="javascript:;">Referrals</a>
+          @endif
+        </li>
+        <li class="nav-item text-nowrap d-block d-sm-none d-sm-block d-md-none">
+          @if ($confirmed == 'YES')
+            <a class="nav-link" href="{{ url('history') }}">USD History</a>
+          @else
+            <a class="nav-link colorinactivotexto" href="javascript:;">USD History</a>
+          @endif
+        </li>
+        <li class="nav-item text-nowrap d-block d-sm-none d-sm-block d-md-none">
+          @if ($confirmed == 'YES')
+            <a class="nav-link" href="{{ url('kyc') }}">KYC</a>
+          @else
+            <a class="nav-link colorinactivotexto" href="javascript:;">KYC</a>
+          @endif
+        </li>
+        <li class="nav-item text-nowrap d-block d-sm-none d-sm-block d-md-none">
+          @if ($confirmed == 'YES')
+            <a class="nav-link" href="{{ url('profile') }}">Profile</a> 
+          @else
+            <a class="nav-link colorinactivotexto" href="javascript:;">Profile</a>  
+          @endif
+        </li>
+        <li class="nav-item text-nowrap d-block d-sm-none d-sm-block d-md-none">
+          @if ($confirmed == 'YES')
+            <a class="nav-link" href="{{ url('change_password') }}">Change Password</a>
+          @else
+            <a class="nav-link colorinactivotexto" href="javascript:;">Change Password</a>
+          @endif
+        </li>
+        <li class="nav-item text-nowrap">
+          <a class="nav-link colorinactivotexto" href="{{ url('logout') }}">Logout</a>
+        </li>
+        </ul>                 
+      </div>
+    
       </nav>
     </header>
 
@@ -92,71 +92,71 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-			    @if ($confirmed == 'YES')
-					<a class="nav-link" href="{{ url('dashboard') }}">
-				@else
-					<a class="nav-link colorinactivotexto" href="javascript:;">
-				@endif
+          @if ($confirmed == 'YES')
+          <a class="nav-link" href="{{ url('dashboard') }}">
+        @else
+          <a class="nav-link colorinactivotexto" href="javascript:;">
+        @endif
                   <span data-feather="home"></span>
                   Dashboard <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
-			    @if ($confirmed == 'YES')
-					<a class="nav-link" href="{{ url('purchase') }}">
-				@else
-					<a class="nav-link colorinactivotexto" href="javascript:;">
-				@endif	
+          @if ($confirmed == 'YES')
+          <a class="nav-link" href="{{ url('purchase') }}">
+        @else
+          <a class="nav-link colorinactivotexto" href="javascript:;">
+        @endif  
                   <span data-feather="file"></span>
                   Purchase
                 </a>
               </li>
               <li class="nav-item">
-			     @if ($confirmed == 'YES')
-					<a class="nav-link" href="{{ url('referrals') }}">
-				 @else
-					 <a class="nav-link colorinactivotexto" href="javascript:;">
-				 @endif
+           @if ($confirmed == 'YES')
+          <a class="nav-link" href="{{ url('referrals') }}">
+         @else
+           <a class="nav-link colorinactivotexto" href="javascript:;">
+         @endif
                   <span data-feather="users"></span>
                   Referrals
                 </a>
               </li>
               <li class="nav-item">
-			    @if ($confirmed == 'YES')
-					<a class="nav-link" href="{{ url('history') }}">
-				@else
-					<a class="nav-link colorinactivotexto" href="javascript:;">
-				@endif
+          @if ($confirmed == 'YES')
+          <a class="nav-link" href="{{ url('history') }}">
+        @else
+          <a class="nav-link colorinactivotexto" href="javascript:;">
+        @endif
                   <span data-feather="dollar-sign"></span>
                   USD History
                 </a>
               </li>
               <li class="nav-item">
-			     @if ($confirmed == 'YES')
-					<a class="nav-link active" href="javascript:;">
-				@else
-					<a class="nav-link active" href="javascript:;">
-				@endif
+           @if ($confirmed == 'YES')
+          <a class="nav-link active" href="javascript:;">
+        @else
+          <a class="nav-link active" href="javascript:;">
+        @endif
                   <span data-feather="alert-octagon"></span>
                   KYC
                 </a>
               </li>
               <li class="nav-item">
-			     @if ($confirmed == 'YES')
-					<a class="nav-link" href="{{ url('profile') }}">
-				 @else
-					 <a class="nav-link colorinactivotexto" href="javascript:;">
-				 @endif
+           @if ($confirmed == 'YES')
+          <a class="nav-link" href="{{ url('profile') }}">
+         @else
+           <a class="nav-link colorinactivotexto" href="javascript:;">
+         @endif
                   <span data-feather="monitor"></span>
                   Profile
                 </a>
               </li>
               <li class="nav-item">
-			     @if ($confirmed == 'YES')
-					<a class="nav-link" href="{{ url('change_password') }}">
-				@else
-					<a class="nav-link colorinactivotexto" href="javascript:;">
-				@endif
+           @if ($confirmed == 'YES')
+          <a class="nav-link" href="{{ url('change_password') }}">
+        @else
+          <a class="nav-link colorinactivotexto" href="javascript:;">
+        @endif
                   <span data-feather="shield"></span>
                   Change Password
                 </a>
@@ -181,18 +181,16 @@
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Know Your Customer</h1>            
           </div>          
-        </main>        
-      </div>
-    </div>
+        </main> 
 
-    <div class="container">
-      <div class="row">
-          <div class="col-md-6 col-xl-6 order-md-1">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <div class="col-md-6 col-xl-6 order-md-1">
           <h4 class="mb-3">Terms & Conditions</h4>
           <form id="formkycconfirmed" class="needs-validation" role="form" method="POST" action="{{ url('kycconfirmed') }}" novalidate>
-			{{ csrf_field() }}
-			
-			<input type="hidden" id="idusuario"  value="{{ $reguser[0]->id }}" name="idusuario">
+      {{ csrf_field() }}
+      
+      <input type="hidden" id="idusuario"  value="{{ $reguser[0]->id }}" name="idusuario">
             <div class="row">
               <div class="col-md-12 mb-3">
                 <div class="custom-control custom-checkbox">
@@ -220,35 +218,21 @@
             <div class="row">
               <div class="col-md-12 mb-3">
                 <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input loschecks" id="customCheck4" name="customCheck4">
-                  <label class="custom-control-label" for="customCheck4">Check here to confirm you understand and agree that you are obtaining utility tokens and not is a security token.</label>
-                </div> 
-              </div>           
-            </div> 
-            <div class="row">
-              <div class="col-md-12 mb-3">
-                <div class="custom-control custom-checkbox">
                   <input type="checkbox" class="custom-control-input loschecks" id="customCheck5" name="customCheck5">
                   <label class="custom-control-label" for="customCheck5">Check here to confirm that you have read, understand and agree to the privacy policy</label>
                 </div> 
               </div>           
             </div> 
-            <div class="row">
-              <div class="col-md-12 mb-3">
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input loschecks" id="customCheck6" name="customCheck6">
-                  <label class="custom-control-label" for="customCheck6">Check here to confirm that you understand and agree that your are purchasing credits and the token are a gift for a purchase of these.</label>
-                </div> 
-              </div>           
-            </div> 
-                                              
             
             <button class="btn btn-primary btn-lg btn-block mb-4 submitkyc_confirmed" disabled type="button">Continue</button>
           </form>
         </div>
       </div>
+          </div>          
+        </main>   
+        
       </div>
-    </div>      
+    </div>   
 
     <footer class="footer">
       <div class="container" align="center">

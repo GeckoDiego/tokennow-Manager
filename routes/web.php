@@ -33,7 +33,7 @@ Route::get('register', function () {
     return view('auth.register');
 });
 
-Route::get('mail','SemdEmail@index');
+//Route::get('mail','SemdEmail@index');
 
 Route::get('mailview', function () {
     return view('email.activation');
@@ -93,10 +93,7 @@ Route::group(['prefix' => '/'], function(){
 
 		'uses' => 'UsuarioController@kyc_process'
 
-	] );
-
-
-	
+	] ); 	
 	
 	Route::get ( 'profile', [
 
@@ -110,12 +107,17 @@ Route::group(['prefix' => '/'], function(){
 
 	] );
 	
-	Route::get ( 'change_password', [
+	Route::post ( 'recovery', [
 
-		'uses' => 'UsuarioController@change_password'
+		'uses' => 'UsuarioController@recovery'
 
 	] );
 	
+ Route::get ( 'change_password', [
+
+		'uses' => 'UsuarioController@change_password'
+
+	] );	
 	Route::post ( 'changepassword', [
 
 		'uses' => 'UsuarioController@changepassword'

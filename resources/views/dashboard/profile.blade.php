@@ -5,15 +5,15 @@
     <header>
       <!-- Fixed navbar -->
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="col-sm-3 col-md-2 col-1"><img src="https://c.fastcdn.co/u/074e20eb/27994387-0-logo.svg" alt="" width="200"></a>
+        <a class="col-sm-3 col-md-2 col-1 d-none d-xl-block"><img src="https://c.fastcdn.co/u/074e20eb/27994387-0-logo.svg" alt="" width="200"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
           <li class="nav-item text-nowrap ml-4">
-                <a>{{ $reguser[0]->email}}</a><br>
-                <a>Balance (<b>BEL: 0  -  CREDITS = 0</b>)</a>
+                <a style="color:black;">{{ $reguser[0]->email}}</a><br>
+                <a style="display:none;">Balance (<b>BEL: 0  -  CREDITS = 0</b>)</a>
               </li>
 
           </ul>  
@@ -116,96 +116,97 @@
             <h1 class="h2">Profile Information</h1>            
           </div>
         </main>
+	<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+		<form id="formeditprofile" class="needs-validation"  method="POST" action="{{ url('updateprofile') }}" novalidate>
+                {{ csrf_field() }}
+
+                        <input type="hidden" id="idusuario"  value="{{ $reguser[0]->id }}" name="idusuario">
+
+                        @if ($message = Session::get('mensaje'))
+                                        <div class="alert alert-success" style="width: 49% !important;">
+                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+                                                {!! $message !!}
+
+                                                {!! Session::forget('mensaje') !!}
+                                        </div>
+                                @endif
+
+                        @if ($message = Session::get('mensajeerror'))
+                                <div class="alert alert-danger" style="width: 49% !important;">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+                                        {!! $message !!}
+
+                                        {!! Session::forget('mensajeerror') !!}
+                                </div>
+                        @endif
+                          <label for="country">Name</label>
+                                <div class="detail" id="errorname" style="position:relative;top:100%!important;display:none!important;">
+                                        <font style="color:red" id="errname"></font>
+                                </div>
+                          <div class="row">
+                                <div class="input-group col-md-6 col-xl-6 mb-3">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text" id="basic-addon1"><i class="material-icons">assignment_ind</i></span>
+                                        </div>
+                                        <input type="text" class="form-control" aria-label="Email" id="name" name="name" aria-describedby="basic-addon1" value="{{ $reguser[0]->name}}">
+                                  </div>
+                          </div>
+                          <label for="country">E-mail</label>
+                          <div class="row">
+                                <div class="input-group col-md-6 col-xl-6 mb-3">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text" id="basic-addon1"><i class="material-icons">email</i></span>
+                                        </div>
+                                        <input type="text" class="form-control" aria-label="Email" id="email" disabled name="email" aria-describedby="basic-addon1" value="{{ $reguser[0]->email}}">
+                                  </div>
+                          </div>
+ <label for="country">ERC20 Wallet</label>
+                          <div class="detail" id="errorvallet" style="position:relative;top:100%!important;display:none!important;">
+                                        <font style="color:red" id="errvallet"> </font>
+                                </div>
+                          <div class="row">
+                                <div class="input-group col-md-6 col-xl-6 mb-3">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text" id="basic-addon1"><i class="material-icons">fingerprint</i></span>
+                                        </div>
+                                        <input type="text" class="form-control" aria-label="Email" id="ercWallet"  name="ercWallet" aria-describedby="basic-addon1" value="{{ $reguser[0]->ercWallet}}">
+                                  </div>
+                          </div>
+                          <label for="country">Referral</label>
+                          <div class="row">
+                                <div class="input-group col-md-6 col-xl-6 mb-3">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text" id="basic-addon1"><i class="material-icons">supervisor_account</i></span>
+                                        </div>
+                                        <input type="text" class="form-control" aria-label="Email" id="emailReferred" disabled name="emailReferred" aria-describedby="basic-addon1" value="{{ $reguser[0]->emailReferred}}">
+                                  </div>
+                          </div>
+                          <div class="row">
+                                <div class="col-md-6 col-xl-6 order-md-1">
+                                  <hr class="mb-4">
+                                </div>
+                          </div>
+                         <!-- <div class="row">
+                                <div class="col-md-2 order-md-1 col-lg-4" >
+                                        <a href="{{ url('dashboard') }}" style="text-decoration:none;">
+                                                {!! Form::button('Back',['class'=>'btn-primary btn-lg btn-block','style'=>'cursor:pointer'])!!}
+                                        </a>
+                                </div>
+                                <div class="col-md-2 order-md-1" >
+                                  <button id="btneditp" class="btn-primary btn-lg btn-block mb-5 sign_editprofile" disabled style="opacity:1" type="buttom">Edit</button>
+                                </div>
+                          </div>-->
+                </form>
+
+          </div>
+        </main>
+
       </div>
     </div>
-	
-	
-	<form id="formeditprofile" class="needs-validation"  method="POST" action="{{ url('updateprofile') }}" novalidate>
-		{{ csrf_field() }}
-		
-			<input type="hidden" id="idusuario"  value="{{ $reguser[0]->id }}" name="idusuario">
-			
-			<div class="container"> 
-			@if ($message = Session::get('mensaje'))
-					<div class="alert alert-success" style="width: 49% !important;">
-						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-						 
-						{!! $message !!}
-						
-						{!! Session::forget('mensaje') !!}
-					</div>
-				@endif	
-		
-			@if ($message = Session::get('mensajeerror'))
-				<div class="alert alert-danger" style="width: 49% !important;">
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-			
-					{!! $message !!}
-			
-					{!! Session::forget('mensajeerror') !!}
-				</div>
-			@endif
-			  <label for="country">Name</label>
-				<div class="detail" id="errorname" style="position:relative;top:100%!important;display:none!important;">
-					<font style="color:red" id="errname"></font>
-				</div>
-			  <div class="row">        
-				<div class="input-group col-md-6 col-xl-6 mb-3">
-					<div class="input-group-prepend">
-					  <span class="input-group-text" id="basic-addon1"><i class="material-icons">assignment_ind</i></span>
-					</div>
-					<input type="text" class="form-control" aria-label="Email" id="name" name="name" aria-describedby="basic-addon1" value="{{ $reguser[0]->name}}">
-				  </div>
-			  </div> 
-			  <label for="country">E-mail</label>
-			  <div class="row">        
-				<div class="input-group col-md-6 col-xl-6 mb-3">
-					<div class="input-group-prepend">
-					  <span class="input-group-text" id="basic-addon1"><i class="material-icons">email</i></span>
-					</div>
-					<input type="text" class="form-control" aria-label="Email" id="email" disabled name="email" aria-describedby="basic-addon1" value="{{ $reguser[0]->email}}">
-				  </div>
-			  </div> 
-			  
-			  
-			  <label for="country">ERC20 Wallet</label>
-			  <div class="detail" id="errorvallet" style="position:relative;top:100%!important;display:none!important;">
-					<font style="color:red" id="errvallet"> </font>
-				</div>
-			  <div class="row">        
-				<div class="input-group col-md-6 col-xl-6 mb-3">
-					<div class="input-group-prepend">
-					  <span class="input-group-text" id="basic-addon1"><i class="material-icons">fingerprint</i></span>
-					</div>
-					<input type="text" class="form-control" aria-label="Email" id="ercWallet"  name="ercWallet" aria-describedby="basic-addon1" value="{{ $reguser[0]->ercWallet}}">
-				  </div>
-			  </div> 
-			  <label for="country">Referral</label>
-			  <div class="row">        
-				<div class="input-group col-md-6 col-xl-6 mb-3">
-					<div class="input-group-prepend">
-					  <span class="input-group-text" id="basic-addon1"><i class="material-icons">supervisor_account</i></span>
-					</div>
-					<input type="text" class="form-control" aria-label="Email" id="emailReferred" disabled name="emailReferred" aria-describedby="basic-addon1" value="{{ $reguser[0]->emailReferred}}">
-				  </div>
-			  </div>
-			  <div class="row">        
-				<div class="col-md-6 col-xl-6 order-md-1">
-				  <hr class="mb-4">
-				</div>
-			  </div>
-			  <div class="row">        
-				<div class="col-md-2 order-md-1" >
-					<a href="{{ url('dashboard') }}" style="text-decoration:none;">
-						{!! Form::button('Back',['class'=>'btn-primary btn-lg btn-block','style'=>'cursor:pointer'])!!}
-					</a>	
-				</div>
-				<div class="col-md-2 order-md-1" > 
-				  <button id="btneditp" class="btn-primary btn-lg btn-block mb-5 sign_editprofile" disabled style="opacity:1" type="buttom">Edit</button>
-				</div>
-			  </div>
-			</div>            
-		</form>
+
     <footer class="footer">
       <div class="container" align="center">
         <span class="text-muted"><img src="http://167.114.47.35/webB/images/poweredbytokennow.svg" alt="" width="150"></span>

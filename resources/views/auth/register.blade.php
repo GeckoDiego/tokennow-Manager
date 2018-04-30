@@ -1,9 +1,11 @@
 @include('templates.app')
 @section('content')
 <body class="text-center">
+
+    	
    <form id="formregistrer" class="form-signin needs-validation" role="form" method="POST" action="{{ url('register') }}">
 	  {{ csrf_field() }}
-      <img class="mb-4" src="https://c.fastcdn.co/u/074e20eb/27994627-0-logo-purple.svg" alt="" width="300">
+      <img class="mb-4" src="{{ asset('logo-fondoblanco.png') }}" alt="" width="300">
       <p>Please complete all fields to join</p>
       
       <div class="detail" id="errorname" style="position:relative;top:100%!important;display:none!important;">
@@ -36,8 +38,8 @@
       <div class="input-group mb-3">
         <div class="input-group-prepend" style="height: 2.85em !important;">
           <span class="input-group-text" id="basic-addon1"><i class="material-icons">vpn_key</i></span>
-        </div>
-        <input type="password" class="form-control" placeholder="Password" id="password" name="password" aria-label="Password" aria-describedby="basic-addon1" required />
+        </div>  <!--pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain 8 characters, one symbol at least and one number" -->
+        <input type="password"  data-toggle="tooltip"  class="form-control" placeholder="Password" id="password" name="password"   aria-label="Password" aria-describedby="basic-addon1" title="must have at least 8 characters"  required />
       </div>
 
 		<div class="detail" id="errorclave" style="position:relative;top:100%!important;display:none!important;">
@@ -85,12 +87,34 @@
         <input type="text" class="form-control" placeholder="Wallet ERC20" aria-label="Wallet ERC20"  id="ercWallet" name="ercWallet"  aria-describedby="basic-addon1">
       </div>
 
-      <button class="btn btn-lg btn-info btn-block sign_register" type="buttom" >Sign Up</button>
-
+      <!--<button class="btn btn-lg btn-info btn-block sign_register" type="buttom" >Sign Up </button>-->
+      {!! Form::button('Sign Up',['class'=>'btn btn-info mb-3  btn-lg btn-block sign_register','style'=>'cursor:pointer'])!!}
+      <a href="{{ url('/') }}" class="selcol">Back to Login</a>      
+      @if ($message = Session::get('mensaje'))
+			<div class="alert alert-success" >
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				 
+				{!! $message !!}
+				
+				{!! Session::forget('mensaje') !!}
+			</div>
+		@endif	
+		
+			
+		@if ($message = Session::get('mensajeerror'))
+			<div class="alert alert-danger" >
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		
+				{!! $message !!}
+		
+				{!! Session::forget('mensajeerror') !!}
+			</div>
+		@endif
       <div class="detail last">
         By submitting this information you confirm that you agree with Terms and Conditions. Please be aware that we don’t register clients from US, China, Singapore, Iran, North Korea and Syria.        
       </div>
       
-      <p class="mt-5 mb-3 text-muted"><img src="http://167.114.47.35/webB/images/poweredbytokennow.svg" alt="" width="150"></p>
+      <p class="mt-5 mb-3 text-muted"><img src="{{ asset('poweredbytokennow.svg') }}" alt="" width="150"></p>
     </form>
+
 	@include('templates.footer');

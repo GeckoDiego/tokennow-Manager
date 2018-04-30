@@ -13,7 +13,6 @@
           <ul class="navbar-nav mr-auto">
           <li class="nav-item text-nowrap ml-4">
                 <a>{{ $reguser[0]->email}}</a><br>
-                <a>Balance (<b>BEL: 0  -  CREDITS = 0</b>)</a>
               </li>
 
           </ul>  
@@ -116,13 +115,10 @@
             <h1 class="h2">Referrals</h1>            
           </div>
         </main>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-xl-6 order-md-1">
-          <h4 class="mb-3">Your Referral ID : example@belotto.io</h4>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <div class="col-md-6 col-xl-6 order-md-1">
+          <h4 class="mb-3">Your Referral ID : {{ $reguser[0]->email}}</h4>
         </div>
       </div>
       <div class="row">
@@ -184,6 +180,8 @@
               </div>                          
           </div>
         </div>
+          </div>
+        </main>
       </div>
     </div>
 

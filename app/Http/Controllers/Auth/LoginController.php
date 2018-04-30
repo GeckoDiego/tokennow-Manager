@@ -52,11 +52,18 @@ class LoginController extends Controller
 		header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
 		header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Disposition, Content-Description');
 		
-        $email=strtolower($request->input('emaillogin'));
+    $email=strtolower($request->input('emaillogin'));
 
 		$clave=$request->input('passwordlogin');  
-
+   
+    if ($email == '' and $clave == '')
+      {
+        Session::put('mensajeerror',trans("This field can not be empty"));
+                                                             
+        return back();	
+      }
 		$clave = md5($clave);
+   
 				
 		$regdatosuser = DB::select("SELECT * from user where email = '".trim($email)."' and password = '".trim($clave)."'");
 		
@@ -92,7 +99,9 @@ class LoginController extends Controller
 		else
 			{
 				
-				return redirect('/');
+				Session::put('mensajeerror',trans("Incorrect data"));
+                                                             
+        return back();
 				
 			}
     }

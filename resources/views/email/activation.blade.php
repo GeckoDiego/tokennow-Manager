@@ -30,7 +30,7 @@
                                                 <tr><!-- logo -->
                                                     <td width="100%" style="font-family: helvetica, Arial, sans-serif; font-size: 18px; letter-spacing: 0px; text-align: center;">  
                                                         <a href="#" style="text-decoration: none;">
-                                                            <img src="https://i.imgur.com/Y7skWhG.png" alt="" border="0" width="166" height="auto" style="with: 166px; height: auto; border: 5px solid #ffffff;">
+                                                            <img src="https://c.fastcdn.co/u/074e20eb/30354071-0-logo-fondoblanco.png" alt="" border="0" width="166" height="auto" style="with: 166px; height: auto; border: 5px solid #ffffff;">
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -45,16 +45,12 @@
                                                 </tr>
                                                 <tr>
                                                     <td width="100%" style=" font-size: 24px; line-height: 24px; font-family:helvetica, Arial, sans-serif; text-align: center; color:#87919F;">   
-                                                        Confirm Email Address
+                                                    Welcome to Belotto
                                                     </td>
                                                 </tr>
                                                 <tr>                                                    
                                                     <td width="100%" style=" padding-top:20px !important; font-size: 14px; line-height: 24px; font-family:helvetica, Arial, sans-serif; text-align: center; color:#87919F;">   
-                                                        Lorem ipsum dolor sit amet, consectetur adipis icing elit, sed do eiusmod tempor 
-                                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Duis aute 
-                                                        irure dolor in repreh enderit in voluptate velit esse cill fugiat nulla pariatur. 
-                                                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
-                                                        mollit anim id est laborum.
+                                                    Thanks for your interest in this groundbreaking new decentralized standard for lotteries. We bring transparency into the lottery business and combine our tech knowledge with the amazing blockchain to make more millionaires in the most honest way.
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -68,7 +64,7 @@
                                                 <tr>
                                                     <td width="100%" style="text-align:center;">
                                                         <a href="{{ $url }}" style="text-decoration:none; font-family: helvetica, Arial, sans-serif; font-size: 12px; letter-spacing: 0px; text-align: center; text-transform: uppercase; padding:10px; color:#ffffff; background-color:#392068; border-radius:6px;">
-                                                            Confirm Email
+                                                            Verify Email
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -139,7 +135,7 @@
                                             <tbody>
                                                 <tr><!-- copyright -->
                                                     <td width="100%" style="font-family: helvetica, Arial, sans-serif; font-size: 11px; text-align: center; line-height: 24px;">    
-                                                        <center>Copyright © 2018 Belotto. All Rights Reserved.</center>                         
+                                                        <center>115 Barrack Road, 3ed Floor, P.O. Box 420 Belize City, Belize© 2018 Belotto Inc</center>                         
                                                     </td>
                                                 </tr>
                                                 <tr>

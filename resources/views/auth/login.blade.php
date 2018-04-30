@@ -3,8 +3,12 @@
   <body class="text-center">
    <form class="form-signin" method="post" id="frmlogin" action="{{ url('login') }}">
    {{ csrf_field() }}
-      <img class="mb-4" src="https://c.fastcdn.co/u/074e20eb/27994627-0-logo-purple.svg" alt="" width="300">
-      <p>Welcome to Aiorix public sale</p>
+      <img class="mb-4" src="{{ asset('logo-fondoblanco.png') }}" alt="" width="300">
+      <p>Welcome to Belotto  public sale</p>
+      
+      	<div class="detail" id="errormail" style="position:relative;top:100%!important;display:none!important;">
+			<font style="color:red" id="errmail"></font>
+		</div>
       
       <div class="input-group mb-3">
         <div class="input-group-prepend">
@@ -40,7 +44,8 @@
 			
 		@if ($message = Session::get('mensajeerror'))
 			<div class="alert alert-danger">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<!--<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>-->
+				
 		
 				{!! $message !!}
 		
@@ -49,7 +54,7 @@
 		@endif
 		
       </div>      
-      <p class="mt-5 mb-3 text-muted"><img src="http://167.114.47.35/webB/images/poweredbytokennow.svg" alt="" width="150"></p>
+      <p class="mt-5 mb-3 text-muted"><img src="{{ asset('poweredbytokennow.svg') }}" alt="" width="150"></p>
     </form>
   </body>
 </html>

@@ -12,7 +12,6 @@
           <ul class="navbar-nav mr-auto">
               <li class="nav-item text-nowrap ml-4">
                 <a>{{ $reguser[0]->email}}</a><br>
-                <a>Balance (<b>BEL: 0  -  CREDITS = 0</b>)</a>
               </li>
           </ul>  
           <ul class="navbar-nav px-3">
@@ -114,12 +113,10 @@
             <h1 class="h2">Transaction History</h1>          
           </div>
         </main>
-      </div>
-    </div>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-xl-6 order-md-1">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+               <div class="col-md-6 col-xl-6 order-md-1">
           <h4 class="mb-3">Last Dollar / Ether value update: {{ date('F d, Y') }}</h4>  
         </div>
       </div>
@@ -135,23 +132,15 @@
             </thead>
             <tbody>
               <tr>
-                <th>04/22/2018</th>
-                <td>$ 600</td>
-                <td>3150</td>
               </tr>
               <tr>
-                <td>04/23/2018</td>
-                <td>$ 610</td>
-                <td>3230</td>
               </tr>
-              <tr>
-                <td>04/24/2018</td>
-                <td>$ 620</td>
-                <td>3250</td>
-              </tr>
+<tr></tr>
             </tbody>
           </table>
         </div>
+          </div>
+        </main>
       </div>
     </div>
 

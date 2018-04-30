@@ -441,7 +441,7 @@
 					}
 			});
 			
-			if (registra == 6)
+			if (registra == 4)
 				{
 					$('#formkycconfirmed').submit(); 
 				}	
@@ -464,7 +464,7 @@
 					}
 			});
 			
-			if (seve == 6)
+			if (seve == 4)
 				{
 					$('.submitkyc_confirmed').attr('disabled',false);
 				}	

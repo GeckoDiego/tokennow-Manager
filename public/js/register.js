@@ -59,7 +59,18 @@
 						}
 					else
 						{
-							$('#errorpass').hide(); 
+							if($("#password").val().length < 8) 
+								{
+									$('#errpass').html('Password invalid');
+							
+									$('#errorpass').show(); 
+                                                                
+                  $('#password').val('');                                              
+								}
+							else
+								{	
+									$('#errorpass').hide(); 
+								}	  
 						}
 				});
 		
@@ -88,7 +99,16 @@
 						}
 					  else
 						{                       
-							$('#errorpass').hide(); 
+							if($("#password").val().length < 8) 
+								{
+									$('#errpass').html('Password invalid');
+							
+									$('#errorpass').show(); 
+								}
+							else
+								{	
+									$('#errorpass').hide(); 
+								}	  
 							
 							
 						}  
@@ -266,7 +286,18 @@
 				}
 			else
 				{
-					$('#errorpass').hide(); 
+          if($("#password").val().length < 8) 
+								{
+									$('#errpass').html('Password invalid');
+							
+									$('#errorpass').show(); 
+                                                            
+                  $('#password').val('');                                          
+								}
+							else
+								{	
+									$('#errorpass').hide(); 
+								}	  
 					
 				}
 			
@@ -297,8 +328,17 @@
 				{
 					//se valida la longitud que no debe ser menor de 20
 					
-					$('#errorvallet').hide(); 
+          if($("#ercWallet").val().length < 20) 
+								{
+									$('#errvallet').html('Vallet invalid');
 							
+									$('#errorvallet').show(); 
+								}
+							else
+								{	
+									$('#errorvallet').hide(); 
+								}	     
+				
 					
 				}
 			
@@ -317,7 +357,7 @@
 
 })();
 
-$('div.alert').delay(5000).slideUp(300);
+//$('div.alert').delay(50000).slideUp(300); 
 
 function isEmail(email) {
   var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
