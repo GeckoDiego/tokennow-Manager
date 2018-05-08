@@ -12,8 +12,6 @@
 |
 */
 
-use Illuminate\Support\Facades\Route;
-
 
 Auth::routes ();
 
@@ -31,9 +29,17 @@ Route::get('recovery', function () {
     return view('auth.recovery');
 });
 
-Route::get('register', function () {
-    return view('auth.register');
-});
+
+
+
+Route::get ( 'dashboard', [
+
+		'uses' => 'DashboardController@dashboard'
+
+	] );
+
+
+
 
 //Route::get('mail','SemdEmail@index');
 
@@ -54,12 +60,23 @@ Route::group(['prefix' => '/'], function(){
 	Route::resource ( 'kyc', 'UsuarioController' );
 	
 	Route::post ('kycconfirmed','UsuarioController@kycconfirmed' );	
+
+	Route::get('register', function () {
+
+		return view('auth.register');
+	});
+ 
+   Route::get ( 'registerreferrals/{email}', [
+
+		'uses' => 'UsuarioController@registerreferrals'
+
+	] );
 	
 	Route::get ( 'dashboard', [
 
-		'uses' => 'DashboardController@dashboard',		
+		'uses' => 'DashboardController@dashboard'
 
-	]);
+	] );
 	
 	Route::get ( 'purchase', [
 
@@ -132,6 +149,12 @@ Route::group(['prefix' => '/'], function(){
 		'uses' => 'UsuarioController@mostrar'
 
 	] );
+
+	Route::get ( '{filename}/mostrarthumb', [
+
+		'uses' => 'UsuarioController@mostrarthumb'
+
+    ] );
 	
 	
 	//para verificar cuenta email
@@ -157,8 +180,30 @@ Route::group(['prefix' => '/'], function(){
 	
 	Route::get('readyemail', function () {
         return view('readyemail');
-    });
-	
+	});
+
+
+	//para generar el genermasivoemail  (se libera solo cuando se requiera generar el masivo de correos pendientes)
+	Route::get ( 'genermasivoemail', [
+
+		'uses' => 'UsuarioController@genermasivoemail'
+
+	] );
+
+	/*//para generar el tokenreferrals  (se libera solo cuando se requiera generar el tokenreferrals)
+	Route::get ( 'generatokenreferrals', [
+
+		'uses' => 'UsuarioController@generatokenreferrals'
+
+	] );*/
+
+	//para generar el thumb a los ya registrados
+
+	/*Route::get ( 'generathumb', [
+
+		'uses' => 'UsuarioController@generathumb'
+
+	] );*/
     
 });
 
@@ -207,6 +252,7 @@ Route::get('validated', function () {
     return view('email.activation');
 });
 */
+
 
 
 

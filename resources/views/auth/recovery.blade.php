@@ -3,7 +3,7 @@
 <body class="text-center">
   <form id="formrecovery" class="form-signin needs-validation" role="form" method="POST" action="{{ url('recovery') }}">
 	  {{ csrf_field() }}
-    <img class="mb-4" src="{{ asset('logo-fondoblanco.png') }}" alt="" width="300">
+    <a href="https://www.belotto.io/" target="_blank"><img class="mb-4" src="{{ asset('logo-fondoblanco.png') }}" alt="" width="300"></a>
     <p class="mb-6">Insert your email to recover your password</p>
     
 	

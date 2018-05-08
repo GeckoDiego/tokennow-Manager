@@ -18,7 +18,7 @@
 						{
 							$('#errorname').hide(); 							
 							
-							if ($('#lastname').val() != '' && $('#email').val() != '' && $('#country').val() > 0 && $('#identificationType').val() != '' && $('#identification').val() != '' &&  $('#birthdate').val() != '' && $('#gender').val() != ''  && ($('#identificationImage').val()!= '' || $('#identificationImageorig').val()!= '') &&   ($('#selfie').val() != '' || $('#selfieorig').val() != ''))
+							if ($('#lastname').val() && $('#email').val() != '' && $('#country').val() > 0 && $('#identificationType').val() != '' && $('#identification').val() != '' &&  $('#birthdate').val() != '' && $('#gender').val() != ''  && $('#identificationImage').val()!= '' &&  $('#selfie').val() != '')
 
 								{
 														
@@ -51,7 +51,7 @@
 						{
 							$('#errorlastname').hide(); 							
 							
-							if ($('#name').val() && $('#email').val() != '' && $('#country').val() > 0 && $('#identificationType').val() != '' && $('#identification').val() != '' &&  $('#birthdate').val() != '' && $('#gender').val() != ''  && ($('#identificationImage').val()!= '' || $('#identificationImageorig').val()!= '') &&   ($('#selfie').val() != '' || $('#selfieorig').val() != ''))
+							if ($('#name').val() && $('#email').val() != '' && $('#country').val() > 0 && $('#identificationType').val() != '' && $('#identification').val() != '' &&  $('#birthdate').val() != '' && $('#gender').val() != ''  && $('#identificationImage').val()!= '' &&  $('#selfie').val() != '')
 
 								{
 														
@@ -106,7 +106,7 @@
 							{
 								$('#errormail').hide(); 
 								
-								if ($('#name').val() != '' && $('#lastname').val() != ''  &&  $('#country').val() > 0 && $('#identificationType').val() != '' && $('#identification').val() != '' &&  $('#birthdate').val() != '' && $('#gender').val() != ''  && ($('#identificationImage').val()!= '' || $('#identificationImageorig').val()!= '') &&   ($('#selfie').val() != '' || $('#selfieorig').val() != ''))
+								if ($('#name').val() != '' && $('#lastname').val() &&  $('#country').val() > 0 && $('#identificationType').val() != '' && $('#identification').val() != '' &&  $('#birthdate').val() != '' && $('#gender').val() != ''  && $('#identificationImage').val()!= '' &&  $('#selfie').val() != '')
 										{
 																
 											$('#btncontinua').attr('style','opacity:1;cursor:pointer');
@@ -137,7 +137,7 @@
 						{
 							$('#errorcountry').hide(); 
 							
-							if ($('#name').val() != '' && $('#lastname').val() != '' &&  $('#email').val() != '' && $('#identificationType').val() != '' && $('#identification').val() != '' &&  $('#birthdate').val() != '' && $('#gender').val() != ''  && ($('#identificationImage').val()!= '' || $('#identificationImageorig').val()!= '') &&   ($('#selfie').val() != '' || $('#selfieorig').val() != ''))
+							if ($('#name').val() != '' && $('#lastname').val() &&  $('#email').val() != '' && $('#identificationType').val() != '' && $('#identification').val() != '' &&  $('#birthdate').val() != '' && $('#gender').val() != ''  && $('#identificationImage').val()!= '' &&  $('#selfie').val() != '')
 								{
 														
 									$('#btncontinua').attr('style','opacity:1;cursor:pointer');
@@ -165,7 +165,7 @@
 						{
 							$('#errortype').hide(); 
 							
-							if ($('#name').val() != '' && $('#lastname').val() != '' &&  $('#country').val() > 0 && $('#email').val() != '' && $('#identification').val() != '' &&  $('#birthdate').val() != '' && $('#gender').val() != ''  && ($('#identificationImage').val()!= '' || $('#identificationImageorig').val()!= '') &&   ($('#selfie').val() != '' || $('#selfieorig').val() != ''))
+							if ($('#name').val() != '' && $('#lastname').val() &&  $('#country').val() > 0 && $('#email').val() != '' && $('#identification').val() != '' &&  $('#birthdate').val() != '' && $('#gender').val() != ''  && $('#identificationImage').val()!= '' &&  $('#selfie').val() != '')
 								{
 														
 									$('#btncontinua').attr('style','opacity:1;cursor:pointer');
@@ -193,7 +193,7 @@
 						{
 							$('#errorid').hide(); 
 							
-							if ($('#name').val() != '' && $('#lastname').val() != '' &&  $('#country').val() > 0 && $('#identificationType').val() != '' && $('#email').val() != '' &&  $('#birthdate').val() != '' && $('#gender').val() != ''  && ($('#identificationImage').val()!= '' || $('#identificationImageorig').val()!= '') &&   ($('#selfie').val() != '' || $('#selfieorig').val() != ''))
+							if ($('#name').val() != '' && $('#lastname').val() &&  $('#country').val() > 0 && $('#identificationType').val() != '' && $('#email').val() != '' &&  $('#birthdate').val() != '' && $('#gender').val() != ''  && $('#identificationImage').val()!= '' &&  $('#selfie').val() != '')
 								{
 														
 									$('#btncontinua').attr('style','opacity:1;cursor:pointer');
@@ -237,7 +237,7 @@
 						{
 							$('#errorgend').hide(); 
 							
-							if ($('#name').val() != '' && $('#lastname').val() != '' &&  $('#country').val() > 0 && $('#identificationType').val() != '' && $('#identification').val() != '' &&  $('#birthdate').val() != '' && $('#email').val() != ''  && ($('#identificationImage').val()!= '' || $('#identificationImageorig').val()!= '') &&   ($('#selfie').val() != '' || $('#selfieorig').val() != ''))
+							if ($('#name').val() != '' && $('#lastname').val() &&  $('#country').val() > 0 && $('#identificationType').val() != '' && $('#identification').val() != '' &&  $('#birthdate').val() != '' && $('#email').val() != ''  && $('#identificationImage').val()!= '' &&  $('#selfie').val() != '')
 								{
 														
 									$('#btncontinua').attr('style','opacity:1;cursor:pointer');
@@ -266,12 +266,7 @@
 						{
 							$('#errorfoto1').hide(); 
 							
-							
-							//alert('name '+$('#name').val()+" lastname"+$('#lastname').val()+" country "+$('#country').val()+" tpid "+$('#identificationType').val()+" id "+$('#identification').val()+" birt "+$('#birthdate').val()+" gender "+$('#gender').val()+" email "+$('#email').val()+" self "+$('#selfie').val());
-
-						
-
-							if ($('#name').val() != '' && $('#lastname').val() != '' &&  $('#country').val() > 0 && $('#identificationType').val() != '' && $('#identification').val() != '' &&  $('#birthdate').val() != '' && $('#gender').val() != ''  && $('#email').val()!= '' &&  ($('#selfie').val() != '' || $('#selfieorig').val() != ''))
+							if ($('#name').val() != '' && $('#lastname').val() &&  $('#country').val() > 0 && $('#identificationType').val() != '' && $('#identification').val() != '' &&  $('#birthdate').val() != '' && $('#gender').val() != ''  && $('#email').val()!= '' &&  $('#selfie').val() != '')
 								{
 														
 									$('#btncontinua').attr('style','opacity:1;cursor:pointer');
@@ -301,7 +296,7 @@
 						{
 							$('#errorfoto2').hide(); 
 							
-							if ($('#name').val() != '' && $('#lastname').val() != '' &&  $('#country').val() > 0 && $('#identificationType').val() != '' && $('#identification').val() != '' &&  $('#birthdate').val() != '' && $('#gender').val() != ''  && ($('#identificationImage').val()!= '' || $('#identificationImageorig').val()!= '') &&   ($('#selfie').val() != '' || $('#selfieorig').val() != ''))
+							if ($('#name').val() != '' && $('#lastname').val() &&  $('#country').val() > 0 && $('#identificationType').val() != '' && $('#identification').val() != '' &&  $('#birthdate').val() != '' && $('#gender').val() != ''  && $('#identificationImage').val()!= '' &&  $('#email').val() != '')
 										{
 																
 											$('#btncontinua').attr('style','opacity:1;cursor:pointer');

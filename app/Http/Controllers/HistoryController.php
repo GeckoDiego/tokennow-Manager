@@ -36,8 +36,36 @@ class HistoryController extends Controller
 		//se extraen los datos del usuario para el formulario
 		
 		$reguser = DB::select("select * FROM user WHERE id = ".$idusu);
+
+		//se buscan los datos del historico del ether
+
+		$regether = DB::select("select valor_usd, valor_ether, created FROM history_ether WHERE id > 0 order by id desc");	
+
+		//se toma el ultimo valor referencial de la tabla
+
+		$regetherlast = DB::select("select valor_usd, valor_ether, created FROM history_ether WHERE id > 0 order by id desc limit 1");
+
+		if (count($regether) > 0 )
+			{
+				$valor_usd = $regether[0]->valor_usd;
+
+				$valor_ether = $regether[0]->valor_ether;
+
+				$fechareg = $regether[0]->created;
+
+			}
+		else
+			{
+				$valor_usd = "660";
+
+				$valor_ether = "4140";
+
+				$fechareg = "2018-04-28 18:05:19";
+
+			}	
+	
 		  		
-		return view('dashboard.history',compact('reguser'));
+		return view('dashboard.history',compact('reguser'))->with(['regether'=>$regether,'valor_usdlast'=>$valor_usd,'valor_etherlast'=>$valor_ether,'fechareg'=>$fechareg]);
 		
 			
 	}

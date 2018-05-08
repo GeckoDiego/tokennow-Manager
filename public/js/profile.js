@@ -1,35 +1,52 @@
 
 (function() {
 		
-		/****** validacion de name *****////
-				$('#name').bind('blur', function () { 
-				
-					if ($('#name').val() == '')
-						{
-							$('#errname').html('This field can not be empty');
-							
-							$('#errorname').show(); 							
-							
-							$('#btneditp').attr('style','opacity:0.8;cursor:default');
-							
-						    $('#btneditp').attr('disabled',true);
-						}
-					else
-						{
-							$('#errorname').hide(); 
-							
-							if ($('#ercWallet').val() != '')
-								{
-							
-									$('#btneditp').attr('style','opacity:1;cursor:pointer');
-									
-									$('#btneditp').attr('disabled',false);
-								}	
-						}
-				});
-		/*******************************///		
+	/****** validacion de name *****////
+	$('#name').bind('blur', function () { 
+
+		if ($('#name').val() == '')
+			{
+				$('#errname').html('This field can not be empty');
+
+				$('#errorname').show(); 							
+
+				$('#btneditp').attr('style','opacity:0.8;cursor:default;color: white!important; text-decoration: none;');
+
+				$('#btneditp').attr('disabled',true);
+			}
+		else
+			{
+				$('#errorname').hide(); 
+
+				if ($('#ercWallet').val() != '')
+					{
+
+						$('#btneditp').attr('style','opacity:1;cursor:pointer;color: white!important; text-decoration: none;');
+
+						$('#btneditp').attr('disabled',false);
+					}	
+			}
+	});
+	/*******************************///		
 			
-		
+	$('#telegramuser').bind('keyup', function (e) { 
+
+    
+        if ($('#telegramuser').val() != '')
+        {
+
+            $('#btneditp').attr('style','opacity:1;cursor:pointer;color: white!important; text-decoration: none;');
+
+            $('#btneditp').attr('disabled',false);
+        }
+    else
+        {
+            $('#btneditp').attr('style','opacity:0.8;cursor:default;color: white!important; text-decoration: none;');
+
+            $('#btneditp').attr('disabled',true);
+        }   
+
+    });	
 		/****** validacion de ercWallet *****////
 				$('#ercWallet').bind('blur', function () { 
 				
@@ -45,11 +62,11 @@
 							
 							if($("#ercWallet").val().length < 20) 
 								{
-									$('#errvallet').html('Vallet invalid');
+									$('#errvallet').html('Invalid Wallet');
 							
 									$('#errorvallet').show(); 
 									
-									$('#btneditp').attr('style','opacity:0.8;cursor:default');
+									$('#btneditp').attr('style','opacity:0.8;cursor:default;color: white!important; text-decoration: none;');
 							
 									$('#btneditp').attr('disabled',true);
 								}
@@ -60,7 +77,7 @@
 									if ($('#name').val() != '')
 										{
 									
-											$('#btneditp').attr('style','opacity:1;cursor:pointer');
+											$('#btneditp').attr('style','opacity:1;cursor:pointer;color: white!important; text-decoration: none;');
 											
 											$('#btneditp').attr('disabled',false);
 										}	
@@ -118,7 +135,7 @@
 		});		
 })();
 
-$('div.alert').delay(5000).slideUp(300);
+//$('div.alert').delay(15000).slideUp(300);
 
 
 function isEmail(email) {

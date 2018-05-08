@@ -54,33 +54,12 @@
 groundbreaking project. We are setting the new standard for lotteries through the extraordinary Blockchain technology to make millionaires in the most honest way.
                                                     </td>
                                                 </tr>
-                                                <tr>                                                    
-                                                    <td width="100%" style=" padding-top:20px !important; font-size: 14px; line-height: 24px; font-family:helvetica, Arial, sans-serif; text-align: center; color:#87919F;">   
-                                                    If the button above does not work, please copy and paste the following URL:<br>
-                                                    <a href="{{ $url }}">{{ $url }}</a>
-                                                    </td>
-                                                </tr>
                                                 <tr>
                                                     <td width="100%" height="25"></td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                         <!-- /Headline Header -->
-                                        <table width="100%" border="0" cellpadding="0" cellspacing="0" align="left" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;">
-                                            <tbody>                                                
-                                                <tr>
-                                                    <td width="100%" style="text-align:center;">
-                                                        <a href="{{ $url }}" style="text-decoration:none; font-family: helvetica, Arial, sans-serif; font-size: 12px; letter-spacing: 0px; text-align: center; text-transform: uppercase; padding:10px; color:#ffffff; background-color:#392068; border-radius:6px;">
-                                                            Verify Email
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="100%" height="30"></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-
                                     </td>
                                 </tr>
                             </tbody>
@@ -142,8 +121,7 @@ groundbreaking project. We are setting the new standard for lotteries through th
                                             <tbody>
                                                 <tr><!-- copyright -->
                                                     <td width="100%" style="font-family: helvetica, Arial, sans-serif; font-size: 11px; text-align: center; line-height: 24px;">    
-                                                        <center>115 Barrack Road, 3rd Floor, P.O. Box 420 Belize City, Belize© 2018 Belotto Inc.</center> 
-                                                                                
+                                                        <center>115 Barrack Road, 3rd Floor, P.O. Box 420 Belize City, Belize© 2018 Belotto Inc.</center>                         
                                                     </td>
                                                 </tr>
                                                 <tr>

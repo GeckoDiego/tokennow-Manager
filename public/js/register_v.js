@@ -16,24 +16,6 @@
 						}
 				});
 		/*******************************///		
-   
-   /****** validacion de name *****////
-				$('#lastname').bind('blur', function () { 
-				
-					if ($('#lastname').val() == '')
-						{
-							$('#errlastname').html('This field can not be empty');
-							
-							$('#errorlastname').show(); 
-						}
-					else
-						{
-							$('#errorlastname').hide(); 
-						}
-				});
-		/*******************************///		
-   
-   
 		
 		/****** validacion de email *****////
 			$('#email').bind('blur', function () { 
@@ -77,66 +59,18 @@
 						}
 					else
 						{
-
-							//var reg= /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/;
-
-							//var reg= /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/   ;
-							//se usan las expresiones regulares para evitar errores humanos de ingreso de la clave
-							var reg= /(?=^.{8,}$).*$/   ;
-
-							if(!reg.test(this.value))
+							if($("#password").val().length < 8) 
 								{
-									$('#errpass').html('the password is not valid (must have at least 8 characters) ');
+									$('#errpass').html('Password invalid');
 							
-									$('#errorpass').show();  
+									$('#errorpass').show(); 
+                                                                
+                  $('#password').val('');                                              
 								}
 							else
-								{
-
-									var reg1= /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[\u0021-\u002b\u003c-\u0040]).*$/   ;
-
-									if(!reg1.test(this.value))
-										{
-											$('#errpass').html('the password is not valid (must have a symbol) ');
-									
-											$('#errorpass').show();  
-										}
-									else
-										{
-											var reg2= /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z]).*$/   ;
-
-											if(!reg2.test(this.value))
-												{
-													$('#errpass').html('the password is not valid (must have a capital letter) ');
-											
-													$('#errorpass').show();  
-												}	
-											else
-												{
-													var reg3= /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/   ;
-
-													if(!reg3.test(this.value))
-														{
-															$('#errpass').html('the password is not valid (must have a lowercase letter) ');
-													
-															$('#errorpass').show();  
-														}	
-													else
-														{
-															$('#errpass').html('');
-							
-															$('#errorpass').hide();		
-														}		
-
-													
-												}	
-
-											
-										}	
-
-									 
-								}	
-
+								{	
+									$('#errorpass').hide(); 
+								}	  
 						}
 				});
 		
@@ -165,60 +99,17 @@
 						}
 					  else
 						{                       
-							var reg= /(?=^.{8,}$).*$/   ;
-
-							if(!reg.test(this.value))
+							if($("#password").val().length < 8) 
 								{
-									$('#errpass').html('the password is not valid (must have at least 8 characters) ');
+									$('#errpass').html('Password invalid');
 							
-									$('#errorpass').show();  
+									$('#errorpass').show(); 
 								}
 							else
-								{
-
-									var reg1= /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[\u0021-\u002b\u003c-\u0040]).*$/   ;
-
-									if(!reg1.test(this.value))
-										{
-											$('#errpass').html('the password is not valid (must have a symbol) ');
-									
-											$('#errorpass').show();  
-										}
-									else
-										{
-											var reg2= /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z]).*$/   ;
-
-											if(!reg2.test(this.value))
-												{
-													$('#errpass').html('the password is not valid (must have a capital letter) ');
-											
-													$('#errorpass').show();  
-												}	
-											else
-												{
-													var reg3= /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/   ;
-
-													if(!reg3.test(this.value))
-														{
-															$('#errpass').html('the password is not valid (must have a lowercase letter) ');
-													
-															$('#errorpass').show();  
-														}	
-													else
-														{
-															$('#errpass').html('');
+								{	
+									$('#errorpass').hide(); 
+								}	  
 							
-															$('#errorpass').hide();		
-														}		
-
-													
-												}	
-
-											
-										}	
-
-									 
-								}							
 							
 						}  
 					}
@@ -337,18 +228,16 @@
 						{
 							//se valida la longitud que no debe ser menor de 20
 							
-							var reg= /(?=^.{20,}$).*$/   ;
-
-							if(!reg.test(this.value))
+							if($("#ercWallet").val().length < 20) 
 								{
-									$('#errvallet').html('Invalid Wallet');
+									$('#errvallet').html('Vallet invalid');
 							
-									$('#errorvallet').show();  
-								}	
+									$('#errorvallet').show(); 
+								}
 							else
 								{	
 									$('#errorvallet').hide(); 
-								}
+								}	
 						}
 				});
 		/*******************************///		
@@ -372,17 +261,6 @@
 					
 				}			
 				 
-      if ($('#lastname').val() == '')
-						{
-							$('#errlastname').html('This field can not be empty');
-							
-							$('#errorlastname').show(); 
-             registra = registra + 1;     
-						}
-					else
-						{
-							$('#errorlastname').hide(); 
-						}       
 			
 			if ($('#email').val() == '')
 				{
@@ -408,72 +286,18 @@
 				}
 			else
 				{
-					  
-					var reg= /(?=^.{8,}$).*$/   ;
-
-							if(!reg.test($('#password').val()))
+          if($("#password").val().length < 8) 
 								{
-									$('#errpass').html('the password is not valid (must have at least 8 characters) ');
+									$('#errpass').html('Password invalid');
 							
-									$('#errorpass').show();  
-
-									registra = registra + 1;
+									$('#errorpass').show(); 
+                                                            
+                  $('#password').val('');                                          
 								}
 							else
-								{
-
-									var reg1= /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[\u0021-\u002b\u003c-\u0040]).*$/   ;
-
-									if(!reg1.test($('#password').val()))
-										{
-											$('#errpass').html('the password is not valid (must have a symbol) ');
-									
-											$('#errorpass').show();  
-
-											registra = registra + 1;
-										}
-									else
-										{
-											var reg2= /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z]).*$/   ;
-
-											if(!reg2.test($('#password').val()))
-												{
-													$('#errpass').html('the password is not valid (must have a capital letter) ');
-											
-													$('#errorpass').show();  
-
-													registra = registra + 1;
-												}	
-											else
-												{
-													var reg3= /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/   ;
-
-													if(!reg3.test($('#password').val()))
-														{
-															$('#errpass').html('the password is not valid (must have a lowercase letter) ');
-													
-															$('#errorpass').show();  
-
-															registra = registra + 1;
-														}	
-													else
-														{
-															$('#errpass').html('');
-							
-															$('#errorpass').hide();		
-														}		
-
-													
-												}	
-
-											
-										}	
-
-									 
-								}
-
-
-
+								{	
+									$('#errorpass').hide(); 
+								}	  
 					
 				}
 			
@@ -503,20 +327,19 @@
 			else
 				{
 					//se valida la longitud que no debe ser menor de 20
-					var reg= /(?=^.{20,}$).*$/   ;
-
-					if(!reg.test($('#ercWallet').val()))
-						{
-							$('#errvallet').html('Vallet invalid ');
 					
-							$('#errorvallet').show();  
-
-							registra = registra + 1;
-						}	
-					else
-						{	
-							$('#errorvallet').hide(); 
-						}					
+          if($("#ercWallet").val().length < 20) 
+								{
+									$('#errvallet').html('Vallet invalid');
+							
+									$('#errorvallet').show(); 
+								}
+							else
+								{	
+									$('#errorvallet').hide(); 
+								}	     
+				
+					
 				}
 			
 			
@@ -532,7 +355,9 @@
 		
 				
 
-})(); 
+})();
+
+//$('div.alert').delay(50000).slideUp(300); 
 
 function isEmail(email) {
   var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;

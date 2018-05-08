@@ -36,8 +36,31 @@ class PurchaseController extends Controller
 		//se extraen los datos del usuario para el formulario
 		
 		$reguser = DB::select("select * FROM user WHERE id = ".$idusu);
+
+		//se buscan los datos del ultimo registro de ether
+
+		$regether = DB::select("select valor_usd, valor_ether, created FROM history_ether WHERE id > 0 order by id desc limit 1");
+
+		if (count($regether) > 0 )
+			{
+				$valor_usd = $regether[0]->valor_usd;
+
+				$valor_ether = $regether[0]->valor_ether;
+
+				$fechareg = $regether[0]->created;
+
+			}
+		else
+			{
+				$valor_usd = "660";
+
+				$valor_ether = "4140";
+
+				$fechareg = "2018-04-28 18:05:19";
+
+			}	
 		  		
-		return view('dashboard.purchase',compact('reguser'));
+		return view('dashboard.purchase',compact('reguser'))->with(['valor_usd'=>$valor_usd,'valor_ether'=>$valor_ether,'fechareg'=>$fechareg]);
 		
 			
 	}

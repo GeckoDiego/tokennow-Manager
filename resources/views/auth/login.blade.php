@@ -1,10 +1,11 @@
 @include('templates.app')
 @section('content')
+<html lang="en">
   <body class="text-center">
    <form class="form-signin" method="post" id="frmlogin" action="{{ url('login') }}">
    {{ csrf_field() }}
-      <img class="mb-4" src="{{ asset('logo-fondoblanco.png') }}" alt="" width="300">
-      <p>Welcome to Belotto  public sale</p>
+      <a href="https://www.belotto.io/" target="_blank"><img class="mb-4" src="{{ asset('logo-fondoblanco.png') }}" alt="" width="300"></a>
+      <p>Welcome to Belotto's public sale!</p>
       
       	<div class="detail" id="errormail" style="position:relative;top:100%!important;display:none!important;">
 			<font style="color:red" id="errmail"></font>

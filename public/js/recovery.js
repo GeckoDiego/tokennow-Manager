@@ -71,7 +71,7 @@
 		
 
 })();
-$('div.alert').delay(10000).slideUp(300); 
+//$('div.alert').delay(15000).slideUp(300); 
 function isEmail(email) {
   var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
   return regex.test(email);

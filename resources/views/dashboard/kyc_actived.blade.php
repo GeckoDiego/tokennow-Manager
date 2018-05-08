@@ -20,7 +20,7 @@
     <header>
       <!-- Fixed navbar -->
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="col-sm-3 col-md-2 col-1"><img src="https://c.fastcdn.co/u/074e20eb/27994387-0-logo.svg" alt="" width="200"></a>
+        <a class="col-sm-3 col-md-3 col-lg-3 col-xl-2 d-none d-md-block d-xl-block d-lg-block" href="https://www.belotto.io/" target="_blank"><img src="https://c.fastcdn.co/u/074e20eb/27994387-0-logo.svg" alt="" width="90%"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -28,7 +28,7 @@
           <ul class="navbar-nav mr-auto">
               <li class="nav-item text-nowrap ml-4">
                 <a>{{ $reguser[0]->email}}</a><br>
-                <a>Balance (<b>BEL: 0  -  CREDITS = 0</b>)</a>
+                <a>Balance (<b>BEL= 0  -  CREDITS = 0</b>)</a>
               </li>
           </ul>  
           <ul class="navbar-nav px-3">
@@ -42,7 +42,7 @@
               <a class="nav-link" href="{{ url('referrals') }}">Referrals</a>
             </li>
             <li class="nav-item text-nowrap d-block d-sm-none d-sm-block d-md-none">
-              <a class="nav-link" href="{{ url('history') }}">USD History</a>
+              <a class="nav-link" href="{{ url('history') }}">ETH History</a>
             </li>
             <li class="nav-item text-nowrap d-block d-sm-none d-sm-block d-md-none">
               <a class="nav-link" href="{{ url('kyc') }}">KYC</a>
@@ -64,7 +64,7 @@
     <!-- Begin page content -->
     <div class="container-fluid">
       <div class="row">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <nav class="col-md-3 col-lg-3 col-xl-2 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
           <ul class="nav flex-column">
               <li class="nav-item">
@@ -87,8 +87,8 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ url('history') }}">
-                  <span data-feather="dollar-sign"></span>
-                  USD History
+                  <i class="fab fa-ethereum mr-2" style="padding-left: 3px;"></i>
+                  ETH History
                 </a>
               </li>
               <li class="nav-item">
@@ -117,7 +117,7 @@
             <ul class="nav flex-column mb-2">
               <li class="nav-item">
                 <a class="nav-link" href="mailto:support@belotto.io">
-                  <span data-feather="at-sign"></span>
+                  <span data-feather="mail"></span>
                   support@belotto.io
                 </a>
               </li>              
@@ -126,16 +126,13 @@
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <div class="justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 border-bottom">
             <h1 class="h2">Know Your Customer</h1>            
           </div>          
-        </main>        
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-	      
+        </main> 
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3">
+        		<div class="row">
 			@if ($message = Session::get('mensaje'))
 				<div class="alert alert-success" style="width: 49% !important;">
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -164,19 +161,23 @@
 					<h4 id="titulomsgnegative" class="alert-title"></h4>
 					<p id="msgboxnegative"></p>
 				</div>
-			</div>
-          <h3 class="mb-3"><font style="color:#088A08">You information was verified sucessfully </font></h3>
-          <div class="col-md-6 order-md-1">
+			</div>          
           
-		  
-        </div>
       </div>
+        	</div>
+        	<div class="justify-content-between flex-wrap flex-md-nowrap align-items-center">
+				<div class="col-sm-9 col-md-12 col-xl-6 order-md-1">
+					<h4 class="mb-3"><font style="color:#088A08">Successfully verified</font></h4>
+				</div>
+			</div>
+        </main>       
       </div>
+    </div>
     </div>      
 
     <footer class="footer">
-      <div class="container">
-        <span class="text-muted">COPYRIGHT © 2018 BELOTTO</span>
+      <div class="container" align="center">
+        <span class="text-muted"><img src="{{ asset('poweredbytokennow.svg') }}" alt="" width="150"></span>
       </div>
     </footer>
 
@@ -195,6 +196,12 @@
 	
     <script>
       feather.replace()
+	  $("#navbarCollapse > ul.navbar-nav.px-3 > li:nth-child(8) > a").on('click', function(){
+			var txt;
+			if ( !confirm("Are you sure to Logout?") ) {
+				return false;
+			}
+		});
     </script>
     
   </body>

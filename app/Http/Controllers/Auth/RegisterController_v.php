@@ -106,25 +106,11 @@ class RegisterController extends Controller
 				
 			    	//return redirect('/');
           }		
-              
-          //se genera el token de referrals
-
-          $length = 11;
-          $token = ""; 
-          $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-          $codeAlphabet.= "abcdefghijklmnopqrstuvwxyz";
-          $codeAlphabet.= "0123456789";
-          $max = strlen($codeAlphabet); // edited
-
-          for ($i=0; $i < $length; $i++) {
-              $token .= $codeAlphabet[random_int(0, $max-1)];
-          }
-
-
+          	
 				DB::table('user')->insert(
 							array(
 									'name'     			=> $request->input('name'),
-                                    'lastname'     		=> $request->input('lastname'),                   
+                  'lastname'     			=> $request->input('lastname'),                   
 									'email'   			=> strtolower($request->input('email')),
 									'password'   		=> md5(trim($request->input('password'))),
 									'emailReferred'		=> strtolower($request->input('emailrefered')),
@@ -132,9 +118,8 @@ class RegisterController extends Controller
 									'confirmationCode'	=> $tk,
 									'confirmedChecks'	=> 'NO',
 									'emailconfirmed'	=> 'NO',
-                                    'kyc1confirmed'     => 'NO',	
-                                    'tokenreferrals'    => $token,
-									'createDate'	    => date("Y-m-d H:m:s")
+	                'kyc1confirmed' => 'NO',	
+									'createDate'	=> date("Y-m-d H:m:s")
 							)
 					);
 					
@@ -155,7 +140,7 @@ class RegisterController extends Controller
 					
 				});	
 				
-				Session::put('mensaje',trans("A validation link has been sent to your email, please access using that link. If you haven&#39; t received the email after a few minutes, please check your spam folder."));
+				Session::put('mensaje',trans("A validation link has been sent to your email, please access using that link"));
 				
 				return redirect('/');
 				

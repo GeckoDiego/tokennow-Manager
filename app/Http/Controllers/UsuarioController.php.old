@@ -331,26 +331,10 @@ class UsuarioController extends Controller
         									'gender'=>$request->input('gender'),
         									'identificationImage'=>$nombreavatar,
         									'selfie'=>$nombreimg2,	
-											'kyc1confirmed'=>'YES',		
-											'confirmed'	=> 'NO',	
+        									'kyc1confirmed'=>'YES',			
         									
-											]);  
-							//se verifica si viene o no de un rechazo del admin
-							
-							$reguserverif = DB::select("select u.confirmedChecks FROM user u  WHERE u.id = ".$request->input('idusuario'));
-
-							if ($reguserverif[0]->confirmedChecks == 'NO')
-								{
-									return redirect('/kyc_confirmation');        	
-								}
-							else
-								{
-									if ($reguserverif[0]->confirmedChecks == 'YES')
-										{
-											return redirect('/kyc_process');        	
-										}
-								}	
-                 					                                             
+        									]);  
+                 					 return redirect('/kyc_confirmation');                                                    
               }
             else
               {  
@@ -397,25 +381,11 @@ class UsuarioController extends Controller
                     									'gender'=>$request->input('gender'),
                     									'identificationImage'=>$nombreavatar,
                     									'selfie'=>$nombreimg2,	
-														'kyc1confirmed'=>'YES',	
-														'confirmed'	=> 'NO',			
+                    									'kyc1confirmed'=>'YES',			
                     									
                     									]);   
                                                                              
-										//return redirect('/kyc_confirmation');    
-										$reguserverif = DB::select("select u.confirmedChecks FROM user u  WHERE u.id = ".$request->input('idusuario'));
-
-										if ($reguserverif[0]->confirmedChecks == 'NO')
-											{
-												return redirect('/kyc_confirmation');        	
-											}
-										else
-											{
-												if ($reguserverif[0]->confirmedChecks == 'YES')
-													{
-														return redirect('/kyc_process');        	
-													}
-											}	                                         
+                           					return redirect('/kyc_confirmation');                                             
                         }                                           
                     else
                       {
@@ -479,25 +449,11 @@ class UsuarioController extends Controller
                           									'gender'=>$request->input('gender'),
                           									'identificationImage'=>$nombreavatar,
                           									'selfie'=>$nombreimg2,	
-															'kyc1confirmed'=>'YES',	
-															'confirmed'	=> 'NO',			
+                          									'kyc1confirmed'=>'YES',			
                           									
                           									]);                                    
                                                                       
-											//return redirect('/kyc_confirmation');                                    
-											$reguserverif = DB::select("select u.confirmedChecks FROM user u  WHERE u.id = ".$request->input('idusuario'));
-
-											if ($reguserverif[0]->confirmedChecks == 'NO')
-												{
-													return redirect('/kyc_confirmation');        	
-												}
-											else
-												{
-													if ($reguserverif[0]->confirmedChecks == 'YES')
-														{
-															return redirect('/kyc_process');        	
-														}
-												}	    
+                                   				return redirect('/kyc_confirmation');                                    
                               }      
                           else
                               {
@@ -558,24 +514,11 @@ class UsuarioController extends Controller
                               									'identificationImage'=>$nombreavatar,
                               									'selfie'=>$nombreimg2,	
                               									'kyc1confirmed'=>'YES',	
-                                               					 'confirmed'=>'NO',			
+                                                'confirmed'=>'NO',			
                               									
                               									]);                                    
                                                                           
-												//return redirect('/kyc_confirmation');    
-												$reguserverif = DB::select("select u.confirmedChecks FROM user u  WHERE u.id = ".$request->input('idusuario'));
-
-												if ($reguserverif[0]->confirmedChecks == 'NO')
-													{
-														return redirect('/kyc_confirmation');        	
-													}
-												else
-													{
-														if ($reguserverif[0]->confirmedChecks == 'YES')
-															{
-																return redirect('/kyc_process');        	
-															}
-													}	                                     
+                                       			return redirect('/kyc_confirmation');                                    
                                   }      
                               else
                                   {
@@ -593,9 +536,9 @@ class UsuarioController extends Controller
                                         				
                                         					$nombreavatar = $timestamp. '_' .$imagen1->getClientOriginalName();  
                                         					
-          													$imagen1->move(storage_path().'/app/img/perfiles/', $nombreavatar); 
+          												$imagen1->move(storage_path().'/app/img/perfiles/', $nombreavatar); 
           												  
-          													$this->createThumb(storage_path().'/app/img/perfiles/',storage_path().'/app/img/perfiles/'.$nombreavatar, $nWidth = 100);
+          												$this->createThumb(storage_path().'/app/img/perfiles/',storage_path().'/app/img/perfiles/'.$nombreavatar, $nWidth = 100);
                                                                                                       
                                                  			// $nombreimg2 = $request->input('selfieorig');
                                         					
@@ -615,24 +558,11 @@ class UsuarioController extends Controller
                                         									'identificationImage'=>$nombreavatar,
                                         									'selfie'=>$nombreimg2,	
                                         									'kyc1confirmed'=>'YES',	
-                                                          					'confirmed'=>'NO',			
+                                                          'confirmed'=>'NO',			
                                         									
                                         									]);                                    
                                                                                     
-															//return redirect('/kyc_confirmation');       
-															$reguserverif = DB::select("select u.confirmedChecks FROM user u  WHERE u.id = ".$request->input('idusuario'));
-
-															if ($reguserverif[0]->confirmedChecks == 'NO')
-																{
-																	return redirect('/kyc_confirmation');        	
-																}
-															else
-																{
-																	if ($reguserverif[0]->confirmedChecks == 'YES')
-																		{
-																			return redirect('/kyc_process');        	
-																		}
-																}	                               
+                                                 			return redirect('/kyc_confirmation');                                    
                                             }   
                                          else
                                              {
@@ -657,36 +587,23 @@ class UsuarioController extends Controller
                                 												$this->createThumb(storage_path().'/app/img/perfiles/',storage_path().'/app/img/perfiles/'.$nombreimg2, $nWidth = 100);  
                                                               					//se graban los datos en la tabla correspondiente 
                                                   					 
-                                                  								DB::table('user')->where('id', '=',$request->input('idusuario'))
-																							->update(['name' => $request->input('name'),
-																							'lastname'=>$request->input('lastname')  ,                                                      
-																							//'email'=>$request->input('email'),
-																							'country'=>$request->input('country'),
-																							'identificationType'=>$request->input('identificationType'),
-																							'identification'=>$request->input('identification'),
-																							'birthdate'=>$request->input('birthdate'),
-																							'gender'=>$request->input('gender'),
-																							'identificationImage'=>$nombreavatar,
-																							'selfie'=>$nombreimg2,	
-																							'kyc1confirmed'=>'YES',	
-                                                                    						'confirmed'=>'NO',			
+                                                  					DB::table('user')->where('id', '=',$request->input('idusuario'))
+                                                  									->update(['name' => $request->input('name'),
+                                                                    				'lastname'=>$request->input('lastname')  ,                                                      
+                                                  									//'email'=>$request->input('email'),
+                                                  									'country'=>$request->input('country'),
+                                                  									'identificationType'=>$request->input('identificationType'),
+                                                  									'identification'=>$request->input('identification'),
+                                                  									'birthdate'=>$request->input('birthdate'),
+                                                  									'gender'=>$request->input('gender'),
+                                                  									'identificationImage'=>$nombreavatar,
+                                                  									'selfie'=>$nombreimg2,	
+                                                  									'kyc1confirmed'=>'YES',	
+                                                                    'confirmed'=>'NO',			
                                                   									
                                                   									]);                                    
                                                                                               
-																	   				//return redirect('/kyc_confirmation');      
-																					$reguserverif = DB::select("select u.confirmedChecks FROM user u  WHERE u.id = ".$request->input('idusuario'));
-
-																					if ($reguserverif[0]->confirmedChecks == 'NO')
-																						{
-																							return redirect('/kyc_confirmation');        	
-																						}
-																					else
-																						{
-																							if ($reguserverif[0]->confirmedChecks == 'YES')
-																								{
-																									return redirect('/kyc_process');        	
-																								}
-																						}	                               
+                                                           			return redirect('/kyc_confirmation');                                    
                                                       } 
                                                     else
                                                       {
@@ -699,7 +616,7 @@ class UsuarioController extends Controller
                                                     					 
                                                     					DB::table('user')->where('id', '=',$request->input('idusuario'))
                                                     									->update(['name' => $request->input('name'),
-                                                                       					'lastname'=>$request->input('lastname'),                                                       
+                                                                       				'lastname'=>$request->input('lastname'),                                                       
                                                     									//'email'=>$request->input('email'),
                                                     									'country'=>$request->input('country'),
                                                     									'identificationType'=>$request->input('identificationType'),
@@ -712,20 +629,7 @@ class UsuarioController extends Controller
                                                     									'confirmed'=>'NO',	
                                                     									]);                                    
                                                                                                 
-																		 //return redirect('/kyc_confirmation');  
-																		 $reguserverif = DB::select("select u.confirmedChecks FROM user u  WHERE u.id = ".$request->input('idusuario'));
-
-																		 if ($reguserverif[0]->confirmedChecks == 'NO')
-																			 {
-																				 return redirect('/kyc_confirmation');        	
-																			 }
-																		 else
-																			 {
-																				 if ($reguserverif[0]->confirmedChecks == 'YES')
-																					 {
-																						 return redirect('/kyc_process');        	
-																					 }
-																			 }	  
+                                                             return redirect('/kyc_confirmation');  
                                                       }
                                                         
                                              }   
@@ -881,24 +785,11 @@ class UsuarioController extends Controller
 				@session_start();	
 				
 				//se actualiza el campo de confirmedChecks 
-
-				$telegramuser1 = $request->input('telegramuser');
-
-				if (substr($telegramuser1, 0,1) != '@')
-					{
-						$telegramuser = '@'.$telegramuser1;
-					}
-				else
-					{
-
-						$telegramuser = $telegramuser1;
-					}	
 				
 				DB::table('user')->where('id', '=',$request->input('idusuario'))
 									->update(['name' => $request->input('name'),
-                  							'lastname' => $request->input('lastname'),
-											'ercWallet' => $request->input('ercWallet'),
-											'telegramuser' => $telegramuser,
+                  'lastname' => $request->input('lastname'),
+									'ercWallet' => $request->input('ercWallet'),
 									
 									]);  
 									
@@ -1214,52 +1105,5 @@ class UsuarioController extends Controller
 		
 		}
 
-		public function genermasivoemail(Request $request)
-		{
-				header('Access-Control-Allow-Origin: *');
-				header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
-				header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Disposition, Content-Description');
-				
-				//se recorren los usuarios y se le genera el token referrals si no lo tiene
-	
-				$reguser = DB::select("select id,name,lastname,confirmationCode,email FROM user WHERE date(createDate) >= '2018-05-05' and emailconfirmed = 'NO' ");
-				//$reguser = DB::select("select id,name,lastname,confirmationCode,email FROM user WHERE id=188 ");
-
-				if (count($reguser) > 0)
-					{
-						$enviados[]=array();
-
-						$ij = 0;
-						foreach ($reguser as $dato) 
-							{
-								$valores = array( 'email' => strtolower($dato->email));
-
-								$tk = $dato->confirmationCode;
-
-								$enviados[$ij] = $dato->name." ".$dato->lastname.": ".$dato->email;
-
-								$ij = $ij + 1;
-					
-								$data = array('name'=>"Mr(s). ".$dato->name." ".$dato->lastname, 
-										"body" => 'To validate your account, proceed to open the link...',
-										"url"=>"belotto.tokennow.io/tk/".$tk); 
-				
-								Mail::send('email.activation', $data, function($message) use ($valores){	  
-									
-									$message->to($valores['email'], 'Validate email')
-												->subject('Verification Email');
-										
-									$message->from('noreply@belotto.io', 'Belotto');
-									
-								});	
-							}
-					}	
-					
-					
-
-				
-		}		
 
 }
-
-
