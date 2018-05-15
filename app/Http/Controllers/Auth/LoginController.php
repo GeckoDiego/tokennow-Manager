@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-//use Lang;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -34,7 +32,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/login';
+    protected $redirectTo = '/admin/dashboard';
 
     /**
      * Create a new controller instance.
@@ -47,75 +45,54 @@ class LoginController extends Controller
     }
 
     public function login(Request $request)
-	{
-		header('Access-Control-Allow-Origin: *');
-		header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
-		header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Disposition, Content-Description');
-		
-    $email=strtolower($request->input('emaillogin'));
+        {
+            header('Access-Control-Allow-Origin: *');
+            header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+            header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Disposition, Content-Description');
+            
+            $email=strtolower($request->input('emaillogin'));
 
-		$clave=$request->input('passwordlogin');  
-   
-    if ($email == '' and $clave == '')
-      {
-        Session::put('mensajeerror',trans("This field can not be empty"));
-                                                             
-        return back();	
-      }
-		$clave = md5($clave);
-   
-				
-		$regdatosuser = DB::select("SELECT * from user where email = '".trim($email)."' and password = '".trim($clave)."'");
-		
-		if (count($regdatosuser) > 0)
-		//if (auth()->attempt(['email' => trim($email), 'password' => trim($clave)]))
-			{
-				$user = Auth::user(); 
-				
-				if (trim($regdatosuser[0]->emailconfirmed) != 'YES')
-					{
-						Session::put('mensajeerror',trans("Not yet validated the email account"));
-				
-						return redirect('/');
-					}
-				else
-					{	
-				
-						Session::put('id_usuario',$regdatosuser[0]->id);
-						Session::put('nombre',$regdatosuser[0]->name);
-						Session::put('confirmed',$regdatosuser[0]->confirmed);
-						
-						if ($regdatosuser[0]->confirmedChecks == 'YES')
-							{
-								return redirect('/dashboard');
-							}
-						else
-							{	
-								return redirect('/kyc');
-							}	
-					}		
-				
-			}
-		else
-			{
-				
-				Session::put('mensajeerror',trans("Incorrect data"));
-                                                             
-        return back();
-				
-			}
-    }
-	
-	public function logout()
-	{
-		
-		@session_start();
-		
-		Auth::logout();
-		
-		Session::flush();
+            $clave=$request->input('passwordlogin');  
 
-		return redirect('/');
-		
-	}
+            $clave = md5($clave);  
+                    
+            $regdatosuser = DB::select("SELECT * from user_admin where email = '".trim($email)."' and password = '".trim($clave)."'");
+           
+            if (count($regdatosuser) > 0)
+            //if (auth()->attempt(['email' => trim($email), 'password' => trim($clave)]))
+                {
+                    $user = Auth::user(); 
+                  
+                    Session::put('id_usuario',$regdatosuser[0]->id);
+                    
+                    Session::put('name',$regdatosuser[0]->name);
+
+                    Session::put('email',$regdatosuser[0]->email);
+                                        
+                    return redirect('/dashboard');	
+                    
+                }
+            else
+                {
+                    
+                    return redirect('/');
+                    
+                }
+        }
+
+    public function logout()
+        {
+            
+            @session_start();
+            
+            Auth::logout();
+            
+            Session::flush();
+
+            return redirect('/');
+            
+        }
+
+
+
 }

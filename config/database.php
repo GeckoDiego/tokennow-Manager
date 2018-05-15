@@ -41,13 +41,13 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => 'localhost',
+            'host'      => '167.114.47.35',
             'port'      => '3306',
             'database'  => 'tokennow',
-            'username'  => 'root',
-            'password'  => '',
+            'username'  => 'tokennow',
+            'password'  => 'CfI8GODYa1W4DtwrrLZv=',
             'collation' => 'utf8_unicode_ci',
-    		'prefix' => '',
+    		    'prefix' => '',
             'strict'    => false,
         ],
 

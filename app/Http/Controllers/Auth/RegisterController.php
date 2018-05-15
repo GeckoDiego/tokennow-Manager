@@ -2,17 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\user;
-//use Lang;
-use Validator;
+use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
-use Session;
-use Mail;
 
 class RegisterController extends Controller
 {
@@ -34,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -75,91 +69,4 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
-
-	 public function store(Request $request)
-		{
-			
-				header('Access-Control-Allow-Origin: *');
-				header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
-				header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Disposition, Content-Description');
-
-							
-				//se genera el token
-				
-				$opciones = ['cost' => 12,];
-				
-				$tk =  password_hash($request->input('name').md5(trim($request->input('password'))).date('YmdHis'), PASSWORD_BCRYPT, $opciones);
-				
-				$tk = str_replace('/', '_._', $tk);
-				
-				$tk = str_replace("'", '_.._', $tk);
-				
-				$tk = str_replace(".", '_,_', $tk);
-				
-			  $regemail = DB::select("SELECT * from user where email = '".strtolower($request->input('email'))."'");
-                    
-        if (count($regemail) > 0)
-          {            
-					  Session::put('mensajeerror',trans("You already have that email"));
-                                                             
-             return back();	
-				
-			    	//return redirect('/');
-          }		
-              
-          //se genera el token de referrals
-
-          $length = 11;
-          $token = ""; 
-          $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-          $codeAlphabet.= "abcdefghijklmnopqrstuvwxyz";
-          $codeAlphabet.= "0123456789";
-          $max = strlen($codeAlphabet); // edited
-
-          for ($i=0; $i < $length; $i++) {
-              $token .= $codeAlphabet[random_int(0, $max-1)];
-          }
-
-
-				DB::table('user')->insert(
-							array(
-									'name'     			=> $request->input('name'),
-                                    'lastname'     		=> $request->input('lastname'),                   
-									'email'   			=> strtolower($request->input('email')),
-									'password'   		=> md5(trim($request->input('password'))),
-									'emailReferred'		=> strtolower($request->input('emailrefered')),
-									'ercWallet'			=> $request->input('ercWallet'),
-									'confirmationCode'	=> $tk,
-									'confirmedChecks'	=> 'NO',
-									'emailconfirmed'	=> 'NO',
-                                    'kyc1confirmed'     => 'NO',	
-                                    'tokenreferrals'    => $token,
-									'createDate'	    => date("Y-m-d H:m:s")
-							)
-					);
-					
-				//se envia el token al email del usuario
-
-				$valores = array( 'email' => strtolower($request->input('email')));
-					
-				$data = array('name'=>"Mr(s). ".$request->input('name'), 
-						"body" => 'To validate your account, proceed to open the link...',
-						"url"=>"belotto.tokennow.io/tk/".$tk); 
-   
-				Mail::send('email.activation', $data, function($message) use ($valores){	  
-					
-					$message->to($valores['email'], 'Validate email')
-								->subject('Verification Email');
-						
-					$message->from('noreply@belotto.io', 'Belotto');
-					
-				});	
-				
-				Session::put('mensaje',trans("A validation link has been sent to your email, please access using that link. If you haven&#39; t received the email after a few minutes, please check your spam folder."));
-				
-				return redirect('/');
-				
-			
-		}
-	
 }

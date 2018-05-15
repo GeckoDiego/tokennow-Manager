@@ -1,0 +1,1 @@
+.cargando {position: absolute;left: 50%;top: 50%;	transform: translate(-50%, -50%);-webkit-transform: translate(-50%, -50%);z-index: 9999999;}.fondomodal{background-color: #000;background: #ffffff;height: 100%;left: 0;position: fixed;top: 0;width: 100%;z-index: 9999;opacity:0.5;display:none;}

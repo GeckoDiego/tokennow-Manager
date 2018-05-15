@@ -1,6 +1,5 @@
 <?php
 
-@session_start ();
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,11 +11,8 @@
 |
 */
 
-
-Auth::routes ();
-
 Route::get('/', function () {
-    return view ( 'auth.login' );
+    return view('auth.login');
 });
 
 Route::get('login', function () {
@@ -25,185 +21,113 @@ Route::get('login', function () {
 
 Route::get ('logout','Auth\LoginController@logout' );
 
-Route::get('recovery', function () {
-    return view('auth.recovery');
-});
+Auth::routes();
 
+Route::group ( [ 
 
+    'middleware' => [ 
 
+            'web' 
 
-Route::get ( 'dashboard', [
+    ] 
 
-		'uses' => 'DashboardController@dashboard'
+    ], function () {
 
-	] );
+    @session_start ();
 
+} );
 
-
-
-//Route::get('mail','SemdEmail@index');
-
-Route::get('mailview', function () {
-    return view('email.activation');
-});
-Route::get('complete', function () {
-    return view('complete');
-});
 
 Route::group(['prefix' => '/'], function(){
 
-	
-	Route::post ('login','Auth\LoginController@login' );
+    Route::post ('login','Auth\LoginController@login' );
 
-	Route::post ('register','Auth\RegisterController@store' );
-	
-	Route::resource ( 'kyc', 'UsuarioController' );
-	
-	Route::post ('kycconfirmed','UsuarioController@kycconfirmed' );	
+    Route::post ('register','Auth\RegisterController@store' );
 
-	Route::get('register', function () {
-
-		return view('auth.register');
-	});
- 
-   Route::get ( 'registerreferrals/{email}', [
-
-		'uses' => 'UsuarioController@registerreferrals'
-
-	] );
-	
-	Route::get ( 'dashboard', [
+    Route::get ( 'dashboard', [
 
 		'uses' => 'DashboardController@dashboard'
 
-	] );
+    ] );
 	
-	Route::get ( 'purchase', [
+	Route::get ( 'kyc_mgmt', [
 
-		'uses' => 'PurchaseController@purchase'
+		'uses' => 'DashboardController@dashboardKyc'
 
-	] );
-	
-	Route::get ( 'referrals', [
+    ] );
 
-		'uses' => 'ReferralsController@referrals'
+    Route::get ( '{filename}/mostrar', [
 
-	] );
-	
-	Route::get ( 'history', [
+		'uses' => 'DashboardController@mostrar'
 
-		'uses' => 'HistoryController@history'
+    ] );
 
-	] );	
-	
-	Route::get ( 'kyc', [
+    Route::get ( '{filename}/mostrarthumb', [
 
-		'uses' => 'UsuarioController@kyc'
+		'uses' => 'DashboardController@mostrarthumb'
 
-	] );
-	
-	Route::get ( 'kyc_confirmation', [
+    ] );
+    
+    Route::get ( 'buscardatospagina/{pagina}/{num_total_registros}/{buscar}/{estatusreg}/{fecha}/{country}/{fecha2}', [
 
-		'uses' => 'UsuarioController@kyc_confirmation'
-
-	] );
-
-	Route::get ( 'kyc_process', [
-
-		'uses' => 'UsuarioController@kyc_process'
-
-	] ); 	
-	
-	Route::get ( 'profile', [
-
-		'uses' => 'UsuarioController@profile'
-
-	] );
-	
-	Route::post ( 'updateprofile', [
-
-		'uses' => 'UsuarioController@updateprofile'
-
-	] );
-	
-	Route::post ( 'recovery', [
-
-		'uses' => 'UsuarioController@recovery'
-
-	] );
-	
- Route::get ( 'change_password', [
-
-		'uses' => 'UsuarioController@change_password'
-
-	] );	
-	Route::post ( 'changepassword', [
-
-		'uses' => 'UsuarioController@changepassword'
-
-	] );	
-	
-
-	Route::get ( '{filename}/mostrar', [
-
-		'uses' => 'UsuarioController@mostrar'
-
-	] );
-
-	Route::get ( '{filename}/mostrarthumb', [
-
-		'uses' => 'UsuarioController@mostrarthumb'
+		'uses' => 'DashboardController@buscardatospaginaUsers'
 
     ] );
 	
-	
-	//para verificar cuenta email
-	Route::get ( 'tk/{token}', [
+	Route::get ( 'buscardatospaginaUsers/{pagina}/{num_total_registros}/{buscar}/{estatusreg}/{fecha}/{country}/{fecha2}', [
 
-		'uses' => 'UsuarioController@tk'
+		'uses' => 'DashboardController@buscardatospagina'
+
+    ] );
+    
+    Route::get ( 'guardarreason/{iduser}/{reason}/{valor}', [
+
+		'uses' => 'DashboardController@guardarreason'
+
+    ] );
+
+    Route::get ( 'upgrade', [
+
+		'uses' => 'DashboardController@upgrade'
+
+    ] );
+    
+    Route::post ( 'upgradeether', [
+
+		'uses' => 'DashboardController@upgradeether'
 
 	] );
-	
-	//para validar el email referido
-	Route::get ( 'cper/{email}', [
 
-		'uses' => 'UsuarioController@cper'
+    
+  Route::get ( 'descargaruser/{buscar}/{estatusreg}/{fecha}/{country}/{fecha2}', [
+
+		'uses' => 'DashboardController@descargaruser'
+
+  ] );
+
+  Route::get ( 'descargaruserreg/{buscar}/{estatusreg}/{fecha}/{country}/{fecha2}', [
+
+		'uses' => 'DashboardController@descargaruserreg'
+
+  ] );  
+  
+  Route::get ( 'sendmailreg/{buscar}/{estatusreg}/{fecha}/{country}/{fecha2}', [
+
+		'uses' => 'DashboardController@sendmailreg'
+
+  ] );
+  
+  Route::get ( 'sendmailkyc/{buscar}/{estatusreg}/{fecha}/{country}/{fecha2}', [
+
+		'uses' => 'DashboardController@sendmailkyc'
 
 	] );
-	
-	//para validar el password actual
-	Route::get ( 'verificapass/{pass}', [
 
-		'uses' => 'UsuarioController@verificapass'
-
-	] );	
-	
-	Route::get('readyemail', function () {
-        return view('readyemail');
+  
+	Route::get('decline', function(){
+		return view('modal.modal');
 	});
-
-
-	//para generar el genermasivoemail  (se libera solo cuando se requiera generar el masivo de correos pendientes)
-	Route::get ( 'genermasivoemail', [
-
-		'uses' => 'UsuarioController@genermasivoemail'
-
-	] );
-
-	/*//para generar el tokenreferrals  (se libera solo cuando se requiera generar el tokenreferrals)
-	Route::get ( 'generatokenreferrals', [
-
-		'uses' => 'UsuarioController@generatokenreferrals'
-
-	] );*/
-
-	//para generar el thumb a los ya registrados
-
-	/*Route::get ( 'generathumb', [
-
-		'uses' => 'UsuarioController@generathumb'
-
-	] );*/
+  
     
 });
 
@@ -229,30 +153,17 @@ Route::group(['prefix' => '/'], function(){
 
 
 
-
-
-
-
-/*
-Route::get('recovery', function () {
-    return view('auth.recovery');
-});
-
-Route::get('register', function () {
-    return view('auth.register');
-});
-
-Route::get('mail','SemdEmail@index');
-
-Route::get('mailview', function () {
-    return view('email.activation');
-});
-
-Route::get('validated', function () {
-    return view('email.activation');
-});
-*/
-
+/*//Route::get('/home', 'DashController@index')->name('home');
+  
+Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function(){         
+    Route::get('dashboard', 'DashController@index');
+    Route::get('upgrade', function(){
+        $data = array(
+            "label_caption" => 'Upgrade USD Value'
+        );  
+        return view('dashboard.upgrade', compact('data'));
+    });
+});*/
 
 
 
